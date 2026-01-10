@@ -1,10 +1,296 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HONEY DARJI | BCA Developer</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#020024,#061a40);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* TECH GRID BACKGROUND */
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background-image:
+        linear-gradient(rgba(0,180,255,.07) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,180,255,.07) 1px,transparent 1px);
+    background-size:70px 70px;
+    animation:gridMove 30s linear infinite;
+    z-index:-1;
+}
+@keyframes gridMove{
+    to{transform:translate(-70px,-70px);}
+}
+
+/* SECTIONS */
+section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:70px 20px;
+}
+
+.card{
+    max-width:1000px;
+    width:100%;
+    background:rgba(0,0,0,.65);
+    padding:50px;
+    border-radius:22px;
+    border:1px solid rgba(0,170,255,.3);
+    box-shadow:0 0 40px rgba(0,170,255,.25);
+    backdrop-filter:blur(14px);
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* HERO NAME */
+h1{
+    font-size:3.6rem;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+#name span{
+    font-weight:800;
+    background:linear-gradient(90deg,#38bdf8,#7dd3fc,#0ea5e9);
+    background-size:200%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradientShift 2s infinite linear,
+             glow 1.5s infinite alternate;
+}
+
+@keyframes gradientShift{
+    from{background-position:0%;}
+    to{background-position:200%;}
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 6px #38bdf8;}
+    to{text-shadow:0 0 20px #7dd3fc;}
+}
+
+/* CURSOR */
+.cursor{
+    display:inline-block;
+    font-weight:700;
+    color:#7dd3fc;
+    animation:blink 1s infinite;
+}
+@keyframes blink{
+    0%,50%{opacity:1;}
+    51%,100%{opacity:0;}
+}
+
+.subtitle{
+    color:#9bdcff;
+    font-size:1.2rem;
+    margin-bottom:20px;
+}
+
+p{line-height:1.7;opacity:.9;}
+.highlight{color:#00ffff;font-weight:600}
+h2{color:#00ffff;margin-bottom:25px}
+
+/* PROJECTS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+.project-card{
+    background:rgba(0,0,0,.7);
+    border:1px solid rgba(0,255,255,.2);
+    padding:25px;
+    border-radius:15px;
+    transition:.4s;
+}
+.project-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(0,255,255,.35);
+}
+.project-card h3{color:#00ffff;margin-bottom:10px}
+
+/* TIMELINE */
+.timeline{
+    border-left:3px solid #00ffff;
+    padding-left:30px;
+}
+.timeline-item{
+    margin-bottom:30px;
+    position:relative;
+}
+.timeline-item::before{
+    content:"";
+    width:14px;
+    height:14px;
+    background:#00ffff;
+    border-radius:50%;
+    position:absolute;
+    left:-38px;
+    top:6px;
+}
+
+/* BUTTONS */
+.buttons{
+    margin-top:30px;
+}
+.buttons a{
+    text-decoration:none;
+    color:#00ffff;
+    padding:12px 28px;
+    margin:8px;
+    border-radius:30px;
+    border:1px solid #00ffff;
+    display:inline-block;
+    transition:.3s;
+}
+.buttons a:hover{
+    background:#00ffff;
+    color:black;
+    box-shadow:0 0 18px #00ffff;
+}
+</style>
 </head>
+
 <body>
-  <h1 style="background-color: purple;">Hello, I am HONEY!!</h1>
-  <p>I am learning web development.starting my githun porfiolo with with basis html code ans css styling to do forentend.</p>
+
+<!-- HERO -->
+<section>
+<div class="card reveal">
+    <h1>
+        <span id="name"></span><span class="cursor">|</span>
+    </h1>
+    <p class="subtitle">
+        BCA Student @ CHARUSAT · Hackathon Enthusiast · Developer
+    </p>
+    <p>
+        I am a first-year <span class="highlight">BCA student at CHARUSAT</span>,
+        passionate about technology, hackathons, and building real-world solutions
+        with clean design and strong logic.
+    </p>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section>
+<div class="card reveal">
+    <h2>Projects & Hackathons 🚀</h2>
+    <div class="projects">
+        <div class="project-card">
+            <h3>Hackathon Project</h3>
+            <p>
+                Successfully participated in my first hackathon, gaining experience
+                in teamwork, problem-solving, and rapid development.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>Upcoming Hackathon – Parul University</h3>
+            <p>
+                Currently preparing for my second hackathon at
+                <span class="highlight">Parul University</span>,
+                focusing on innovation and impactful solutions.
+            </p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+<div class="card reveal">
+    <h2>My Journey 📈</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>BCA @ CHARUSAT</h3>
+            <p>Building a strong foundation in programming and computer applications.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Hackathons</h3>
+            <p>1 hackathon completed · Preparing for next challenge.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Future Goals</h3>
+            <p>Become a skilled software developer and contribute to impactful tech.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- RESUME -->
+<section>
+<div class="card reveal">
+    <h2>Resume 📄</h2>
+    <p>Download my resume to explore my skills and journey in detail.</p>
+    <div class="buttons">
+        <a href="resume.pdf" download>Download Resume</a>
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+    </div>
+</div>
+</section>
+
+<script>
+/* TYPING NAME LOOP */
+const text = "HONEY DARJI";
+const nameEl = document.getElementById("name");
+let index = 0;
+let deleting = false;
+
+function typeLoop(){
+    if(!deleting && index < text.length){
+        nameEl.innerHTML += `<span>${text[index]}</span>`;
+        index++;
+        setTimeout(typeLoop,120);
+    }
+    else if(!deleting && index === text.length){
+        setTimeout(()=>deleting=true,1200);
+        setTimeout(typeLoop,1200);
+    }
+    else if(deleting && index > 0){
+        nameEl.innerHTML = nameEl.innerHTML.slice(0,-15);
+        index--;
+        setTimeout(typeLoop,80);
+    }
+    else{
+        deleting = false;
+        index = 0;
+        setTimeout(typeLoop,400);
+    }
+}
+typeLoop();
+
+/* SCROLL REVEAL */
+const cards=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+    cards.forEach(card=>{
+        if(card.getBoundingClientRect().top < window.innerHeight-120){
+            card.classList.add("show");
+        }
+    });
+});
+</script>
+
 </body>
 </html>
