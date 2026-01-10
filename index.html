@@ -17,6 +17,7 @@ body{
     background:linear-gradient(135deg,#020024,#061a40);
     color:white;
     overflow-x:hidden;
+    scroll-behavior:smooth;
 }
 
 /* TECH GRID BACKGROUND */
@@ -34,6 +35,31 @@ body::before{
 }
 @keyframes gridMove{
     to{transform:translate(-70px,-70px);}
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,.6);
+    padding:12px 30px;
+    display:flex;
+    justify-content:flex-end;
+    z-index:10;
+    border-bottom:1px solid #38bdf8;
+    backdrop-filter:blur(8px);
+}
+nav a{
+    color:#7dd3fc;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:600;
+    transition:.3s;
+}
+nav a:hover{
+    color:#38bdf8;
 }
 
 /* SECTIONS */
@@ -151,6 +177,25 @@ h2{color:#00ffff;margin-bottom:25px}
     top:6px;
 }
 
+/* CERTIFICATES */
+.certificates{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+.certificate-card{
+    background:rgba(0,0,0,.7);
+    border:1px solid rgba(0,255,255,.2);
+    padding:25px;
+    border-radius:15px;
+    transition:.4s;
+}
+.certificate-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(0,255,255,.35);
+}
+.certificate-card h3{color:#00ffff;margin-bottom:10px}
+
 /* BUTTONS */
 .buttons{
     margin-top:30px;
@@ -175,8 +220,17 @@ h2{color:#00ffff;margin-bottom:25px}
 
 <body>
 
+<!-- NAVIGATION -->
+<nav>
+    <a href="#hero">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#resume">Resume</a>
+    <a href="#certificates">Certificates</a>
+</nav>
+
 <!-- HERO -->
-<section>
+<section id="hero">
 <div class="card reveal">
     <h1>
         <span id="name"></span><span class="cursor">|</span>
@@ -193,7 +247,7 @@ h2{color:#00ffff;margin-bottom:25px}
 </section>
 
 <!-- PROJECTS -->
-<section>
+<section id="projects">
 <div class="card reveal">
     <h2>Projects & Hackathons 🚀</h2>
     <div class="projects">
@@ -218,7 +272,7 @@ h2{color:#00ffff;margin-bottom:25px}
 </section>
 
 <!-- TIMELINE -->
-<section>
+<section id="timeline">
 <div class="card reveal">
     <h2>My Journey 📈</h2>
     <div class="timeline">
@@ -239,7 +293,7 @@ h2{color:#00ffff;margin-bottom:25px}
 </section>
 
 <!-- RESUME -->
-<section>
+<section id="resume">
 <div class="card reveal">
     <h2>Resume 📄</h2>
     <p>Download my resume to explore my skills and journey in detail.</p>
@@ -247,6 +301,26 @@ h2{color:#00ffff;margin-bottom:25px}
         <a href="resume.pdf" download>Download Resume</a>
         <a href="#">GitHub</a>
         <a href="#">LinkedIn</a>
+    </div>
+</div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+<div class="card reveal">
+    <h2>Certificates 🏆</h2>
+    <div class="certificates">
+        <div class="certificate-card">
+            <h3>Tally Certificate</h3>
+            <p>Completed Tally course from ITC with excellent understanding of accounting software.</p>
+            <a href="tally_certificate.pdf" download>Download</a>
+        </div>
+        <div class="certificate-card">
+            <h3>Hackathon Participation</h3>
+            <p>Certificate for participating in first hackathon and successfully completing project challenges.</p>
+            <a href="hackathon1_certificate.pdf" download>Download</a>
+        </div>
+        <!-- You can add more certificates here -->
     </div>
 </div>
 </section>
@@ -281,15 +355,18 @@ function typeLoop(){
 }
 typeLoop();
 
-/* SCROLL REVEAL */
+/* SCROLL REVEAL ON VIEW */
 const cards=document.querySelectorAll(".reveal");
-window.addEventListener("scroll",()=>{
+function revealCards(){
     cards.forEach(card=>{
-        if(card.getBoundingClientRect().top < window.innerHeight-120){
+        const rect=card.getBoundingClientRect();
+        if(rect.top < window.innerHeight-120){
             card.classList.add("show");
         }
     });
-});
+}
+window.addEventListener("scroll",revealCards);
+window.addEventListener("load",revealCards);
 </script>
 
 </body>
