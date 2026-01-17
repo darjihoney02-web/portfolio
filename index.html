@@ -6,6 +6,16 @@
 <title>HONEY DARJI | BCA Developer</title>
 
 <style>
+:root{
+    --bg-dark:#020024;
+    --bg-light:#f5faff;
+    --card-dark:rgba(0,0,0,.65);
+    --card-light:rgba(255,255,255,.85);
+    --text-dark:#ffffff;
+    --text-light:#020024;
+    --accent:#38bdf8;
+}
+
 *{
     margin:0;
     padding:0;
@@ -14,27 +24,23 @@
 }
 
 body{
-    background:linear-gradient(135deg,#020024,#061a40);
-    color:white;
+    background:linear-gradient(135deg,var(--bg-dark),#061a40);
+    color:var(--text-dark);
     overflow-x:hidden;
     scroll-behavior:smooth;
+    transition:.4s;
 }
 
-/* TECH GRID BACKGROUND */
-body::before{
-    content:"";
-    position:fixed;
-    width:200%;
-    height:200%;
-    background-image:
-        linear-gradient(rgba(0,180,255,.07) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(0,180,255,.07) 1px,transparent 1px);
-    background-size:70px 70px;
-    animation:gridMove 30s linear infinite;
-    z-index:-1;
+body.light{
+    background:linear-gradient(135deg,#eaf6ff,var(--bg-light));
+    color:var(--text-light);
 }
-@keyframes gridMove{
-    to{transform:translate(-70px,-70px);}
+
+/* AI CANVAS */
+#ai-bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
 }
 
 /* NAVBAR */
@@ -43,23 +49,31 @@ nav{
     top:0;
     left:0;
     width:100%;
-    background:rgba(0,0,0,.6);
+    background:rgba(0,0,0,.55);
     padding:12px 30px;
     display:flex;
     justify-content:flex-end;
+    align-items:center;
+    gap:18px;
     z-index:10;
-    border-bottom:1px solid #38bdf8;
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--accent);
 }
+body.light nav{
+    background:rgba(255,255,255,.6);
+}
+
 nav a{
-    color:#7dd3fc;
+    color:var(--accent);
     text-decoration:none;
-    margin-left:20px;
     font-weight:600;
-    transition:.3s;
 }
-nav a:hover{
-    color:#38bdf8;
+nav a:hover{opacity:.8}
+
+/* TOGGLE */
+.toggle{
+    cursor:pointer;
+    font-size:1.3rem;
 }
 
 /* SECTIONS */
@@ -68,65 +82,61 @@ section{
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:70px 20px;
+    padding:90px 20px;
 }
 
 .card{
     max-width:1000px;
     width:100%;
-    background:rgba(0,0,0,.65);
+    background:var(--card-dark);
     padding:50px;
     border-radius:22px;
-    border:1px solid rgba(0,170,255,.3);
-    box-shadow:0 0 40px rgba(0,170,255,.25);
+    border:1px solid rgba(56,189,248,.35);
+    box-shadow:0 0 40px rgba(56,189,248,.25);
     backdrop-filter:blur(14px);
     opacity:0;
     transform:translateY(40px);
     transition:1s ease;
 }
+body.light .card{
+    background:var(--card-light);
+}
+
 .card.show{
     opacity:1;
     transform:translateY(0);
 }
 
-/* HERO NAME */
+/* HERO */
 h1{
     font-size:3.6rem;
-    letter-spacing:3px;
+    letter-spacing:4px;
     margin-bottom:20px;
 }
 
 #name span{
-    font-weight:800;
+    font-weight:900;
     background:linear-gradient(90deg,#38bdf8,#7dd3fc,#0ea5e9);
     background-size:200%;
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-    animation:gradientShift 2s infinite linear,
-             glow 1.5s infinite alternate;
+    animation:grad 2s linear infinite, glow 1.4s infinite alternate;
 }
 
-@keyframes gradientShift{
-    from{background-position:0%;}
+@keyframes grad{
     to{background-position:200%;}
 }
-
 @keyframes glow{
-    from{text-shadow:0 0 6px #38bdf8;}
-    to{text-shadow:0 0 20px #7dd3fc;}
+    from{text-shadow:0 0 8px #38bdf8;}
+    to{text-shadow:0 0 22px #7dd3fc;}
 }
 
-/* CURSOR */
 .cursor{
-    display:inline-block;
-    font-weight:700;
     color:#7dd3fc;
+    font-weight:700;
     animation:blink 1s infinite;
 }
-@keyframes blink{
-    0%,50%{opacity:1;}
-    51%,100%{opacity:0;}
-}
+@keyframes blink{50%{opacity:0}}
 
 .subtitle{
     color:#9bdcff;
@@ -134,28 +144,40 @@ h1{
     margin-bottom:20px;
 }
 
-p{line-height:1.7;opacity:.9;}
+p{line-height:1.7;opacity:.9}
 .highlight{color:#00ffff;font-weight:600}
 h2{color:#00ffff;margin-bottom:25px}
 
-/* PROJECTS */
-.projects{
+/* PROJECTS & CERTS */
+.projects,.certificates{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:20px;
 }
-.project-card{
+
+.project-card,.certificate-card{
     background:rgba(0,0,0,.7);
-    border:1px solid rgba(0,255,255,.2);
+    border:1px solid rgba(0,255,255,.25);
     padding:25px;
-    border-radius:15px;
+    border-radius:16px;
     transition:.4s;
 }
-.project-card:hover{
+body.light .project-card,
+body.light .certificate-card{
+    background:#ffffff;
+}
+
+.project-card:hover,
+.certificate-card:hover{
     transform:translateY(-10px);
     box-shadow:0 0 25px rgba(0,255,255,.35);
 }
-.project-card h3{color:#00ffff;margin-bottom:10px}
+
+.project-card h3,
+.certificate-card h3{
+    color:#00ffff;
+    margin-bottom:10px;
+}
 
 /* TIMELINE */
 .timeline{
@@ -177,29 +199,7 @@ h2{color:#00ffff;margin-bottom:25px}
     top:6px;
 }
 
-/* CERTIFICATES */
-.certificates{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
-}
-.certificate-card{
-    background:rgba(0,0,0,.7);
-    border:1px solid rgba(0,255,255,.2);
-    padding:25px;
-    border-radius:15px;
-    transition:.4s;
-}
-.certificate-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 25px rgba(0,255,255,.35);
-}
-.certificate-card h3{color:#00ffff;margin-bottom:10px}
-
 /* BUTTONS */
-.buttons{
-    margin-top:30px;
-}
 .buttons a{
     text-decoration:none;
     color:#00ffff;
@@ -220,153 +220,124 @@ h2{color:#00ffff;margin-bottom:25px}
 
 <body>
 
-<!-- NAVIGATION -->
+<canvas id="ai-bg"></canvas>
+
 <nav>
     <a href="#hero">Home</a>
     <a href="#projects">Projects</a>
     <a href="#timeline">Timeline</a>
     <a href="#resume">Resume</a>
     <a href="#certificates">Certificates</a>
+    <span class="toggle" onclick="toggleMode()">🌗</span>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
 <div class="card reveal">
-    <h1>
-        <span id="name"></span><span class="cursor">|</span>
-    </h1>
-    <p class="subtitle">
-        BCA Student @ CHARUSAT · Hackathon Enthusiast · Developer
-    </p>
-    <p>
-        I am a first-year <span class="highlight">BCA student at CHARUSAT</span>,
-        passionate about technology, hackathons, and building real-world solutions
-        with clean design and strong logic.
-    </p>
+    <h1><span id="name"></span><span class="cursor">|</span></h1>
+    <p class="subtitle">BCA Student @ CHARUSAT · Hackathon Enthusiast · Developer</p>
+    <p>I am a first-year <span class="highlight">BCA student at CHARUSAT</span>, passionate about building real-world tech solutions.</p>
 </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
 <div class="card reveal">
-    <h2>Projects & Hackathons 🚀</h2>
-    <div class="projects">
-        <div class="project-card">
-            <h3>Hackathon Project</h3>
-            <p>
-                Successfully participated in my first hackathon, gaining experience
-                in teamwork, problem-solving, and rapid development.
-            </p>
-        </div>
-
-        <div class="project-card">
-            <h3>Upcoming Hackathon – Parul University</h3>
-            <p>
-                Currently preparing for my second hackathon at
-                <span class="highlight">Parul University</span>,
-                focusing on innovation and impactful solutions.
-            </p>
-        </div>
-    </div>
+<h2>Projects & Hackathons 🚀</h2>
+<div class="projects">
+<div class="project-card">
+<h3>Hackathon Project</h3>
+<p>Built under time pressure with teamwork and logic-driven execution.</p>
+</div>
+<div class="project-card">
+<h3>Parul University Hackathon</h3>
+<p>Preparing my second hackathon with focus on innovation and UI clarity.</p>
+</div>
+</div>
 </div>
 </section>
 
-<!-- TIMELINE -->
 <section id="timeline">
 <div class="card reveal">
-    <h2>My Journey 📈</h2>
-    <div class="timeline">
-        <div class="timeline-item">
-            <h3>BCA @ CHARUSAT</h3>
-            <p>Building a strong foundation in programming and computer applications.</p>
-        </div>
-        <div class="timeline-item">
-            <h3>Hackathons</h3>
-            <p>1 hackathon completed · Preparing for next challenge.</p>
-        </div>
-        <div class="timeline-item">
-            <h3>Future Goals</h3>
-            <p>Become a skilled software developer and contribute to impactful tech.</p>
-        </div>
-    </div>
+<h2>My Journey 📈</h2>
+<div class="timeline">
+<div class="timeline-item"><h3>BCA @ CHARUSAT</h3><p>Strong CS foundations.</p></div>
+<div class="timeline-item"><h3>Hackathons</h3><p>1 completed · 1 upcoming.</p></div>
+<div class="timeline-item"><h3>Future</h3><p>Skilled software developer.</p></div>
+</div>
 </div>
 </section>
 
-<!-- RESUME -->
 <section id="resume">
 <div class="card reveal">
-    <h2>Resume 📄</h2>
-    <p>Download my resume to explore my skills and journey in detail.</p>
-    <div class="buttons">
-        <a href="resume.pdf" download>Download Resume</a>
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-    </div>
+<h2>Resume 📄</h2>
+<div class="buttons">
+<a href="resume.pdf" download>Download Resume</a>
+<a href="#">GitHub</a>
+<a href="#">LinkedIn</a>
+</div>
 </div>
 </section>
 
-<!-- CERTIFICATES -->
 <section id="certificates">
 <div class="card reveal">
-    <h2>Certificates 🏆</h2>
-    <div class="certificates">
-        <div class="certificate-card">
-            <h3>Tally Certificate</h3>
-            <p>Completed Tally course from ITC with excellent understanding of accounting software.</p>
-            <a href="tally_certificate.pdf" download>Download</a>
-        </div>
-        <div class="certificate-card">
-            <h3>Hackathon Participation</h3>
-            <p>Certificate for participating in first hackathon and successfully completing project challenges.</p>
-            <a href="hackathon1_certificate.pdf" download>Download</a>
-        </div>
-        <!-- You can add more certificates here -->
-    </div>
+<h2>Certificates 🏆</h2>
+<div class="certificates">
+<div class="certificate-card">
+<h3>Tally Certificate</h3>
+<p>Accounting & ERP fundamentals.</p>
+</div>
+<div class="certificate-card">
+<h3>Hackathon Participation</h3>
+<p>First hackathon completion certificate.</p>
+</div>
+</div>
 </div>
 </section>
 
 <script>
-/* TYPING NAME LOOP */
-const text = "HONEY DARJI";
-const nameEl = document.getElementById("name");
-let index = 0;
-let deleting = false;
+/* NAME TYPING */
+const text="HONEY DARJI";
+let i=0,del=false;
+const el=document.getElementById("name");
+(function type(){
+if(!del && i<text.length){el.innerHTML+=`<span>${text[i++]}</span>`;setTimeout(type,120);}
+else if(!del){del=true;setTimeout(type,1200);}
+else if(i>0){el.innerHTML=el.innerHTML.slice(0,-15);i--;setTimeout(type,80);}
+else{del=false;setTimeout(type,400);}
+})();
 
-function typeLoop(){
-    if(!deleting && index < text.length){
-        nameEl.innerHTML += `<span>${text[index]}</span>`;
-        index++;
-        setTimeout(typeLoop,120);
-    }
-    else if(!deleting && index === text.length){
-        setTimeout(()=>deleting=true,1200);
-        setTimeout(typeLoop,1200);
-    }
-    else if(deleting && index > 0){
-        nameEl.innerHTML = nameEl.innerHTML.slice(0,-15);
-        index--;
-        setTimeout(typeLoop,80);
-    }
-    else{
-        deleting = false;
-        index = 0;
-        setTimeout(typeLoop,400);
-    }
-}
-typeLoop();
+/* REVEAL */
+document.addEventListener("scroll",()=>document.querySelectorAll(".reveal").forEach(c=>{
+if(c.getBoundingClientRect().top<innerHeight-120)c.classList.add("show");
+}));
 
-/* SCROLL REVEAL ON VIEW */
-const cards=document.querySelectorAll(".reveal");
-function revealCards(){
-    cards.forEach(card=>{
-        const rect=card.getBoundingClientRect();
-        if(rect.top < window.innerHeight-120){
-            card.classList.add("show");
-        }
-    });
+/* DARK/LIGHT */
+function toggleMode(){document.body.classList.toggle("light");}
+
+/* AI NEURAL NETWORK */
+const canvas=document.getElementById("ai-bg"),ctx=canvas.getContext("2d");
+let w,h,nodes=[];
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}
+window.onresize=resize;resize();
+for(let i=0;i<80;i++)nodes.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+function draw(){
+ctx.clearRect(0,0,w,h);
+nodes.forEach(n=>{
+n.x+=n.vx;n.y+=n.vy;
+if(n.x<0||n.x>w)n.vx*=-1;
+if(n.y<0||n.y>h)n.vy*=-1;
+nodes.forEach(m=>{
+let d=Math.hypot(n.x-m.x,n.y-m.y);
+if(d<140){
+ctx.strokeStyle=`rgba(56,189,248,${1-d/140})`;
+ctx.beginPath();ctx.moveTo(n.x,n.y);ctx.lineTo(m.x,m.y);ctx.stroke();
 }
-window.addEventListener("scroll",revealCards);
-window.addEventListener("load",revealCards);
+});
+ctx.fillStyle="#38bdf8";
+ctx.fillRect(n.x,n.y,2,2);
+});
+requestAnimationFrame(draw);
+}
+draw();
 </script>
 
 </body>
