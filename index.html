@@ -23,17 +23,44 @@
     font-family:'Segoe UI',sans-serif;
 }
 
+/* 🔥 POCKETPAL STYLE ANIMATED BACKGROUND */
 body{
-    background:linear-gradient(135deg,var(--bg-dark),#061a40);
+    min-height:100vh;
+    background:linear-gradient(
+        -45deg,
+        #020024,
+        #020024,
+        #061a40,
+        #0a2a66,
+        #020024
+    );
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
     color:var(--text-dark);
     overflow-x:hidden;
     scroll-behavior:smooth;
     transition:.4s;
 }
 
+/* 🌞 LIGHT MODE */
 body.light{
-    background:linear-gradient(135deg,#eaf6ff,var(--bg-light));
+    background:linear-gradient(
+        -45deg,
+        #eaf6ff,
+        #f5faff,
+        #dbeafe,
+        #e0f2fe
+    );
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
     color:var(--text-light);
+}
+
+/* BACKGROUND ANIMATION */
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 /* AI CANVAS */
