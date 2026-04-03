@@ -34,7 +34,7 @@ Hi 👋 I'm Honey Darji, a BCA student at CHARUSAT University (Gujarat, India) a
 🌐 Live Portfolio
 <div align="center">
 👉 Click Here to View My Portfolio
-https://darjihoney02-web.github.io/portfolio/
+https://darjihoney02-web.github.io/portfolio/<br>
 ✨ A fully interactive AI-themed personal portfolio with animations, chatbot, and modern UI.
 
 </div>
