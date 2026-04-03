@@ -102,10 +102,10 @@ Hi 👋 I'm **Honey Darji**, a **BCA student at CHARUSAT University (Gujarat, In
 
 | 🥈 Rank | Event | Year |
 |--------|------|------|
-| 2nd Place | PU-CODE Hackathon 3.0 | 2024 |
-| Rank #224 | HackTheRank | 2024 |
-| Participant | GDG Hackathon | 2024 |
-| Participant | Tech-Tonic | 2024 |
+| 2nd Place | PU-CODE Hackathon 3.0 | 2025 |
+| Rank #224 | HackTheRank | 2025 |
+| Participant | GDG Hackathon | 2025 |
+| Participant | Tech-Tonic | 2025 |
 
 ---
 
@@ -144,5 +144,3 @@ Platform	Link
 ⭐ Star this repo if you like it!
 💙 It motivates me to build more amazing projects
 
-<br/> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:818cf8,100:38bdf8&height=120&section=footer"/> </div> ```
-✅ What I fixed
