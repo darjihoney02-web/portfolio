@@ -23,18 +23,18 @@
 Hi 👋 I'm Honey Darji, a BCA student at CHARUSAT University (Gujarat, India) and an aspiring AI Developer & Product Builder.
 
 🚀 Built real-world AI projects like VendorGo
-🏆 Participated in 7+ hackathons
+🏆 Participated in 3+ hackathons
 📜 Earned 10+ certifications
 💡 Passionate about AI, startups, and solving real problems
 📍 Anand, Gujarat, India
 🎓 BCA @ CHARUSAT University (2024–Present)
 💻 Focus: AI + Full Stack Development
-⚡ Fun Fact: 7 hackathons in my first year!
+⚡ Fun Fact: 5 hackathons in my first year!
 
 🌐 Live Portfolio
 <div align="center">
 👉 Click Here to View My Portfolio
-
+https://darjihoney02-web.github.io/portfolio/
 ✨ A fully interactive AI-themed personal portfolio with animations, chatbot, and modern UI.
 
 </div>
