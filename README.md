@@ -1,13 +1,6 @@
 # 🚀 Honey Darji — AI Portfolio
 
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:38bdf8,100:818cf8&height=200&section=header&text=Honey%20Darji&fontSize=60&fontColor=ffffff&fontAlignY=38&desc=AI%20Developer%20%7C%20Builder%20%7C%20Hackathon%20Enthusiast&descAlignY=58&descSize=18" width="100%"/>
-
-<br/>
-
-<img src="https://readme-typing-svg.herokuapp.com?color=38BDF8&center=true&vCenter=true&lines=Building+AI+Products;Hackathon+Enthusiast;Future+Startup+Founder;Full+Stack+Learner" />
-
 <br/><br/>
 
 <a href="https://darjihoney02-web.github.io/portfolio/">
