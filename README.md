@@ -4,13 +4,13 @@
 <br/><br/>
 
 <a href="https://darjihoney02-web.github.io/portfolio/">
-  <img src="https://img.shields.io/badge/🌐_Live_Portfolio-Visit_Now-38bdf8?style=for-the-badge"/>
+ 
 </a>
 <a href="https://github.com/darjihoney02-web">
-  <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github"/>
+ 
 </a>
 <a href="https://www.linkedin.com/in/honey-darji-0202s78371">
-  <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin"/>
+ 
 </a>
 
 <br/><br/>
@@ -56,16 +56,10 @@ Current Goal:
 + 5-minute onboarding
 + Built for real-world scalability
 🛠️ Tech Stack
-<div align="center"> <img src="https://skillicons.dev/icons?i=html,css,js,python,git,github,vscode" /> </div>
-📊 GitHub Analytics
-<div align="center"> <img src="https://github-readme-stats.vercel.app/api?username=darjihoney02-web&show_icons=true&theme=tokyonight&hide_border=true" height="150"/> <img src="https://github-readme-streak-stats.herokuapp.com/?user=darjihoney02-web&theme=tokyonight&hide_border=true" height="150"/> </div>
-📈 Contribution Graph
-<div align="center"> <img src="https://github-readme-activity-graph.vercel.app/graph?username=darjihoney02-web&theme=tokyo-night&hide_border=true"/> </div>
-🏆 Achievements
-<div align="center">
+
 🥈 PU-CODE Hackathon → 2nd Rank
 🏅 HackTheRank → Rank #224
-⚡ 7+ Hackathons
+⚡ 3+ Hackathons
 📜 10+ Certifications
 
 </div>
@@ -75,10 +69,6 @@ Current Goal:
 💻 Interactive • 🤖 AI Chatbot • 🎨 Premium UI
 
 </div>
-⚙️ Setup
-git clone https://github.com/YOUR_USERNAME/portfolio.git
-cd portfolio
-open index.html
 🔮 Future Roadmap
 + Backend Integration
 + Blog System
