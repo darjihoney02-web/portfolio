@@ -90,14 +90,6 @@ portfolio/
 │
 └── README.md
 
-⚙️ Setup & Deployment
-Clone the Repository
-git clone https://github.com/YOUR_USERNAME/portfolio.git
-cd portfolio
-
-Run Locally
-open index.html
-
 Deploy via GitHub Pages
 Settings → Pages → Deploy from branch
 Branch: main / root
