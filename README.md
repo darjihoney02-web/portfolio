@@ -127,20 +127,4 @@ portfolio/
  Blog section
  Multi-language (Hindi / Gujarati)
  PWA support
-📬 Connect With Me
-<div align="center">
-Platform	Link
-🌐 Portfolio	Visit
 
-🐙 GitHub	@darjihoney02-web
-
-💼 LinkedIn	Honey Darji
-
-📧 Email	Send Mail
-</div>
-<div align="center">
-⭐ Star this repo if you like it!
-
-💙 It motivates me to build more amazing projects
-
-</div> ```
