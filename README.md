@@ -1,138 +1,126 @@
-# 🚀 Honey Darji – AI Developer Portfolio
+🚀 Honey Darji — AI Portfolio
+<div align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:38bdf8,100:818cf8&height=200&section=header&text=Honey%20Darji&fontSize=60&fontColor=ffffff&fontAlignY=38&desc=AI%20Developer%20%7C%20BCA%20Student%20%7C%20Hackathon%20Enthusiast&descAlignY=58&descSize=18" width="100%"/> <br/>
 
-<p align="center">
-  <b>Building the future with code, creativity & AI</b> 🤖✨  
-</p>
 
-<p align="center">
-  <a href="https://darjihoney02-web.github.io/portfolio/">
-    🌍 <b>Live Portfolio</b>
-  </a> •
-  <a href="https://github.com/darjihoney02-web">
-    💻 GitHub
-  </a> •
-  <a href="https://www.linkedin.com/in/honey-darji-0202S78371">
-    💼 LinkedIn
-  </a>
-</p>
 
----
 
-## 👩‍💻 About Me
 
-Hey! I'm **Honey Darji**, a passionate **BCA student** and aspiring **Software Developer from India 🇮🇳**
 
-I love building **real-world projects**, participating in **hackathons**, and exploring **AI-powered solutions**.
 
-💡 This portfolio represents:
 
-* My **development journey**
-* My **skills & projects**
-* My **growth mindset as a developer**
+<br/>
 
-> 🚀 *This is not just a website — it's the beginning of my tech career.*
 
----
 
-## 🌟 Project Overview
 
-This is a **modern, responsive portfolio website** designed to showcase my work and skills in a clean and professional way.
 
-### ✨ Key Highlights
 
-* 🎨 Clean & modern UI (Apple-inspired design)
-* 📱 Fully responsive across all devices
-* ⚡ Smooth animations & interactions
-* 🤖 AI-style interactive elements
-* 📂 Structured and scalable codebase
+</div>
+👩‍💻 About Me
 
----
+"I build smart, scalable, and impactful solutions at the intersection of AI, design, and technology."
 
-## 🛠️ Tech Stack
+Hi 👋 I'm Honey Darji, a BCA student at CHARUSAT University (Gujarat, India) and an aspiring AI Developer & Product Builder.
 
-| Technology           | Usage                        |
-| -------------------- | ---------------------------- |
-| **HTML5**            | Structure                    |
-| **CSS3**             | Styling & Animations         |
-| **JavaScript (ES6)** | Interactivity                |
-| **Git & GitHub**     | Version Control & Deployment |
+🚀 Built real-world AI projects like VendorGo
+🏆 Participated in 7+ hackathons
+📜 Earned 10+ certifications
+💡 Passionate about AI, startups, and solving real problems
+📍 Anand, Gujarat, India
+🎓 BCA @ CHARUSAT University (2024–Present)
+💻 Focus: AI + Full Stack Development
+⚡ Fun Fact: 7 hackathons in my first year!
 
----
+🌐 Live Portfolio
+<div align="center">
+👉 Click Here to View My Portfolio
 
-## 📂 Folder Structure
+✨ A fully interactive AI-themed personal portfolio with animations, chatbot, and modern UI.
 
-```
+</div>
+✨ Features
+Feature	Description
+🎨 AI UI Design	Neural network animated background
+⌨️ Typing Hero	Dynamic role animation
+🌗 Dark/Light Mode	Smooth theme switching
+📊 Skill Bars	Animated progress indicators
+🃏 3D Cards	Hover tilt + glow effects
+🖼️ Certificate Gallery	Click-to-view lightbox
+🤖 AI Chatbot	Smart assistant navigation
+📱 Responsive	Mobile + Tablet + Desktop
+🛠️ Tech Stack
+<div align="center">
+
+
+
+
+
+
+
+
+</div>
+HTML5 (Semantic & SEO-friendly)
+CSS3 (Animations, Glassmorphism, Responsive UI)
+JavaScript (DOM, Animations, Chatbot logic)
+Git & GitHub (Version Control + Deployment)
+🚀 Projects
+⭐ VendorGo — AI Vendor Platform
+
+Helping 50M+ Indian street vendors go digital
+
+🤖 AI-powered product catalogue generation
+📱 WhatsApp Business automation
+⚡ 5-minute onboarding
+📈 SEO & visibility tools
+🏆 Achievements
+🥈 Rank	Event	Year
+2nd Place	PU-CODE Hackathon 3.0	2024
+Rank #224	HackTheRank	2024
+Participant	GDG Hackathon	2024
+Participant	Tech-Tonic	2024
+📂 Project Structure
 portfolio/
 │
 ├── index.html
-├── style.css
-├── script.js
+├── vendorGo-about.html
 │
 ├── assets/
-│   ├── images/
-│   └── icons/
+│   ├── resume.pdf
+│   └── certificates/
 │
 └── README.md
-```
 
----
+⚙️ Setup & Deployment
+Clone the Repository
+git clone https://github.com/YOUR_USERNAME/portfolio.git
+cd portfolio
 
-## 🌍 Live Website
+Run Locally
+open index.html
 
-👉 **Check it out here:**
-🔗 https://darjihoney02-web.github.io/portfolio/
+Deploy via GitHub Pages
+Settings → Pages → Deploy from branch
+Branch: main / root
 
----
+📈 Future Improvements
+ Backend contact form
+ Blog section
+ Multi-language (Hindi/Gujarati)
+ PWA support
+📬 Connect With Me
+<div align="center">
+Platform	Link
+🌐 Portfolio	https://darjihoney02-web.github.io/portfolio/
 
-## 🏆 Achievements
+🐙 GitHub	https://github.com/darjihoney02-web
 
-* 🥈 Secured **2nd Rank in Semester**
-* 📊 Scored **97 Percentile in 12th**
-* 🧠 Completed **AI Literacy Course**
-* 💻 Participated in **Multiple Hackathons**
+💼 LinkedIn	https://www.linkedin.com/in/honey-darji-0202s78371
 
----
+📧 Email	darjihoney02@gmail.com
+</div>
+<div align="center">
+⭐ Star this repo if you like it!
 
-## 🎯 Learning Outcomes
+💙 It motivates me to build more amazing projects
 
-Through this project, I learned:
-
-* 🧩 How to structure real-world web projects
-* 🌐 How to deploy using GitHub Pages
-* 🔧 How to write clean & maintainable code
-* 📄 How to create professional README files
-* 🎨 Basics of UI/UX design
-
----
-
-## 🔮 Future Improvements
-
-* 🌙 Dark Mode Toggle
-* ✨ Advanced Animations
-* 🤖 Real AI Integration (ChatGPT API)
-* 📩 Backend-connected Contact Form
-* 🎥 Interactive project previews
-
----
-
-## 📬 Connect With Me
-
-* 💻 GitHub: https://github.com/darjihoney02-web
-* 💼 LinkedIn: https://www.linkedin.com/in/honey-darji-0202S78371
-* 📧 Email: [darjihoney02@gmail.com](mailto:darjihoney02@gmail.com)
-
----
-
-## ⭐ Support
-
-If you like this project:
-
-🌟 **Give it a star on GitHub**
-🤝 **Connect with me**
-🚀 **Follow my journey**
-
----
-
-<p align="center">
-  💡 <i>"Start small. Build consistently. Win big."</i>
-</p>
+<br/> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:818cf8,100:38bdf8&height=120&section=footer"/> </div>
