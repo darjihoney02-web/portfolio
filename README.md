@@ -1,118 +1,106 @@
-🚀 Honey Darji — AI Portfolio
-<div align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:38bdf8,100:818cf8&height=200&section=header&text=Honey%20Darji&fontSize=60&fontColor=ffffff&fontAlignY=38&desc=AI%20Developer%20%7C%20BCA%20Student%20%7C%20Hackathon%20Enthusiast&descAlignY=58&descSize=18" width="100%"/> <br/>
+# 🚀 Honey Darji — AI Portfolio
 
+<div align="center">
 
-
-
-
-
-
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:38bdf8,100:818cf8&height=200&section=header&text=Honey%20Darji&fontSize=60&fontColor=ffffff&fontAlignY=38&desc=AI%20Developer%20%7C%20Builder%20%7C%20Hackathon%20Enthusiast&descAlignY=58&descSize=18" width="100%"/>
 
 <br/>
 
+<img src="https://readme-typing-svg.herokuapp.com?color=38BDF8&center=true&vCenter=true&lines=Building+AI+Products;Hackathon+Enthusiast;Future+Startup+Founder;Full+Stack+Learner" />
 
+<br/><br/>
 
+<a href="https://darjihoney02-web.github.io/portfolio/">
+  <img src="https://img.shields.io/badge/🌐_Live_Portfolio-Visit_Now-38bdf8?style=for-the-badge"/>
+</a>
+<a href="https://github.com/darjihoney02-web">
+  <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github"/>
+</a>
+<a href="https://www.linkedin.com/in/honey-darji-0202s78371">
+  <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin"/>
+</a>
 
+<br/><br/>
 
-
-</div>
-👩‍💻 About Me
-
-"I build smart, scalable, and impactful solutions at the intersection of AI, design, and technology."
-
-Hi 👋 I'm Honey Darji, a BCA student at CHARUSAT University (Gujarat, India) and an aspiring AI Developer & Product Builder.
-
-🚀 Built real-world AI projects like VendorGo
-🏆 Participated in 3+ hackathons
-📜 Earned 10+ certifications
-💡 Passionate about AI, startups, and solving real problems
-📍 Anand, Gujarat, India
-🎓 BCA @ CHARUSAT University (2024–Present)
-💻 Focus: AI + Full Stack Development
-⚡ Fun Fact: 5 hackathons in my first year!
-
-🌐 Live Portfolio
-<div align="center">
-👉 Click Here to View My Portfolio
-https://darjihoney02-web.github.io/portfolio/<br>
-✨ A fully interactive AI-themed personal portfolio with animations, chatbot, and modern UI.
+<img src="https://komarev.com/ghpvc/?username=darjihoney02-web&color=38bdf8&style=flat-square"/>
+<img src="https://img.shields.io/github/followers/darjihoney02-web?style=social"/>
+<img src="https://img.shields.io/github/stars/darjihoney02-web/portfolio?style=social"/>
 
 </div>
-✨ Features
-Feature	Description
-🎨 AI UI Design	Neural network animated background
-⌨️ Typing Hero	Dynamic role animation
-🌗 Dark/Light Mode	Smooth theme switching
-📊 Skill Bars	Animated progress indicators
-🃏 3D Cards	Hover tilt + glow effects
-🖼️ Certificate Gallery	Click-to-view lightbox
-🤖 AI Chatbot	Smart assistant navigation
-📱 Responsive	Mobile + Tablet + Desktop
-🛠️ Tech Stack
-<div align="center">
 
+---
 
+## ⚡ About Me
 
+```diff
++ Building AI-powered solutions that solve real-world problems
+Hi 👋 I'm Honey Darji
 
+🎓 BCA @ CHARUSAT University
+📍 Gujarat, India
 
+💡 I don’t just learn tech — I build impactful products
 
+🧠 Developer Mindset
+Focus:
+  - AI + Full Stack Development
+  - Startup Thinking
+  - Problem Solving
 
+Strengths:
+  - Fast Learner
+  - Builder Mentality
+  - Hackathon Experience
 
-</div>
-HTML5 (Semantic & SEO-friendly)
-CSS3 (Animations, Glassmorphism, Responsive UI)
-JavaScript (DOM, Animations, Chatbot logic)
-Git & GitHub (Version Control + Deployment)
-🚀 Projects
+Current Goal:
+  - Build scalable AI products 🚀
+🚀 Featured Project
 ⭐ VendorGo — AI Vendor Platform
+🛍️ Helping 50M+ Indian street vendors go digital
 
-Helping 50M+ Indian street vendors go digital
-
-🤖 AI-powered product catalogue generation
-📱 WhatsApp Business automation
-⚡ 5-minute onboarding
-📈 SEO & visibility tools
++ AI-powered catalogue generation
++ WhatsApp automation
++ 5-minute onboarding
++ Built for real-world scalability
+🛠️ Tech Stack
+<div align="center"> <img src="https://skillicons.dev/icons?i=html,css,js,python,git,github,vscode" /> </div>
+📊 GitHub Analytics
+<div align="center"> <img src="https://github-readme-stats.vercel.app/api?username=darjihoney02-web&show_icons=true&theme=tokyonight&hide_border=true" height="150"/> <img src="https://github-readme-streak-stats.herokuapp.com/?user=darjihoney02-web&theme=tokyonight&hide_border=true" height="150"/> </div>
+📈 Contribution Graph
+<div align="center"> <img src="https://github-readme-activity-graph.vercel.app/graph?username=darjihoney02-web&theme=tokyo-night&hide_border=true"/> </div>
 🏆 Achievements
-🥈 Rank	Event	Year
-2nd Place	PU-CODE Hackathon 3.0	2024
-Rank #224	HackTheRank	2024
-Participant	GDG Hackathon	2024
-Participant	Tech-Tonic	2024
-📂 Project Structure
-portfolio/
-│
-├── index.html
-├── vendorGo-about.html
-│
-├── assets/
-│   ├── resume.pdf
-│   └── certificates/
-│
-└── README.md
+<div align="center">
+🥈 PU-CODE Hackathon → 2nd Rank
+🏅 HackTheRank → Rank #224
+⚡ 7+ Hackathons
+📜 10+ Certifications
 
-Deploy via GitHub Pages
-Settings → Pages → Deploy from branch
-Branch: main / root
+</div>
+🌐 Portfolio
+<div align="center">
+🔗 Explore My Portfolio
+💻 Interactive • 🤖 AI Chatbot • 🎨 Premium UI
 
-📈 Future Improvements
- Backend contact form
- Blog section
- Multi-language (Hindi/Gujarati)
- PWA support
+</div>
+⚙️ Setup
+git clone https://github.com/YOUR_USERNAME/portfolio.git
+cd portfolio
+open index.html
+🔮 Future Roadmap
++ Backend Integration
++ Blog System
++ Multi-language Support
++ PWA App Version
 📬 Connect With Me
 <div align="center">
-Platform	Link
-🌐 Portfolio	https://darjihoney02-web.github.io/portfolio/
+<a href="https://darjihoney02-web.github.io/portfolio/">🌐 Portfolio</a> •
+<a href="https://github.com/darjihoney02-web">🐙 GitHub</a> •
+<a href="https://www.linkedin.com/in/honey-darji-0202s78371">💼 LinkedIn</a> •
+<a href="mailto:darjihoney02@gmail.com">📧 Email</a>
 
-🐙 GitHub	https://github.com/darjihoney02-web
-
-💼 LinkedIn	https://www.linkedin.com/in/honey-darji-0202s78371
-
-📧 Email	darjihoney02@gmail.com
 </div>
 <div align="center">
 ⭐ Star this repo if you like it!
+🚀 Building. Learning. Growing.
 
-💙 It motivates me to build more amazing projects
-
-<br/> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:818cf8,100:38bdf8&height=120&section=footer"/> </div>
+<br/> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:818cf8,100:38bdf8&height=120&section=footer"/> </div> ```
