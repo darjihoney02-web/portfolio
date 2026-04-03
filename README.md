@@ -122,25 +122,25 @@ portfolio/
 │   └── certificates/
 │
 └── README.md
-
 📈 Future Improvements
  Backend contact form
-
  Blog section
-
- Multi-language (Hindi/Gujarati)
-
+ Multi-language (Hindi / Gujarati)
  PWA support
-
 📬 Connect With Me
 <div align="center">
 Platform	Link
-🌐 Portfolio	https://darjihoney02-web.github.io/portfolio/
-🐙 GitHub	https://github.com/darjihoney02-web
-💼 LinkedIn	https://www.linkedin.com/in/honey-darji-0202s78371
-📧 Email	darjihoney02@gmail.com
+🌐 Portfolio	Visit
+
+🐙 GitHub	@darjihoney02-web
+
+💼 LinkedIn	Honey Darji
+
+📧 Email	Send Mail
 </div>
 <div align="center">
 ⭐ Star this repo if you like it!
+
 💙 It motivates me to build more amazing projects
 
+</div> ```
