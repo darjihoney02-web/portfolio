@@ -102,7 +102,7 @@ Hi 👋 I'm **Honey Darji**, a **BCA student at CHARUSAT University (Gujarat, In
 
 | 🥈 Rank | Event | Year |
 |--------|------|------|
-| 2nd Place | PU-CODE Hackathon 3.0 | 2025 |
+| Participant | PU-CODE Hackathon 3.0 | 2025 |
 | Rank #224 | HackTheRank | 2025 |
 | Participant | GDG Hackathon | 2025 |
 | Participant | Tech-Tonic | 2025 |
