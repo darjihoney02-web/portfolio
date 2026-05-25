@@ -7,9 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════
-   DESIGN TOKENS — all original, unchanged
-═══════════════════════════════════════ */
 :root{
   --bg:#03050f;
   --surface:rgba(8,14,40,.75);
@@ -39,10 +36,6 @@ body{
   min-height:100vh;overflow-x:hidden;cursor:none;
   transition:background var(--ease),color var(--ease);
 }
-
-/* ═══════════════════════════════════════
-   3D ADD: Triple-layer cursor depth system
-═══════════════════════════════════════ */
 #cur{
   width:9px;height:9px;background:var(--a1);border-radius:50%;
   position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:screen;
@@ -63,20 +56,12 @@ body{
 }
 body.ch #cur{transform:translate(-50%,-50%) scale(3.2);background:var(--a2);filter:drop-shadow(0 0 10px var(--a2));}
 body.ch #cur-r,body.ch #cur-g{opacity:0;}
-
-/* ═══════════════════════════════════════
-   CANVAS + GRAIN
-═══════════════════════════════════════ */
 #bg{position:fixed;inset:0;z-index:-2;opacity:.48;}
 .grain{
   position:fixed;inset:0;z-index:-1;opacity:.028;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   pointer-events:none;
 }
-
-/* ═══════════════════════════════════════
-   3D ADD: Ambient floating orbs
-═══════════════════════════════════════ */
 .orb{
   position:fixed;border-radius:50%;pointer-events:none;z-index:-1;
   filter:blur(80px);opacity:.06;
@@ -91,10 +76,6 @@ body.ch #cur-r,body.ch #cur-g{opacity:0;}
   100%{transform:translate(-18px,42px) scale(.96);}
 }
 [data-theme="light"] .orb{opacity:.03;}
-
-/* ═══════════════════════════════════════
-   NAV
-═══════════════════════════════════════ */
 nav{
   position:fixed;top:0;left:0;width:100%;z-index:300;
   padding:13px 44px;
@@ -132,16 +113,8 @@ nav{
   transition:border-color .22s,background .22s,box-shadow .22s;
 }
 .tbtn:hover{background:rgba(56,189,248,.1);border-color:var(--a1);box-shadow:0 0 14px rgba(56,189,248,.22);}
-
-/* ═══════════════════════════════════════
-   SECTIONS
-═══════════════════════════════════════ */
 section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:108px 22px 65px;position:relative;}
 .wrap{max-width:1060px;width:100%;}
-
-/* ═══════════════════════════════════════
-   HERO
-═══════════════════════════════════════ */
 #hero{overflow:hidden;}
 .scanline{
   position:absolute;top:-2px;left:0;width:100%;height:2px;
@@ -149,7 +122,6 @@ section{min-height:100vh;display:flex;align-items:center;justify-content:center;
   animation:scanMove 7s linear infinite;pointer-events:none;z-index:1;
 }
 @keyframes scanMove{0%{top:-2px;}100%{top:100%;}}
-
 .hero-chip{
   font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;
   color:var(--a1);text-transform:uppercase;margin-bottom:28px;
@@ -162,7 +134,6 @@ section{min-height:100vh;display:flex;align-items:center;justify-content:center;
   box-shadow:0 0 6px var(--a3);
 }
 @keyframes ldot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.65);}}
-
 h1.hname{
   font-family:var(--dis);font-size:clamp(3.4rem,9vw,8rem);
   font-weight:800;line-height:.9;letter-spacing:-.025em;margin-bottom:24px;
@@ -183,16 +154,11 @@ h1.hname{
   box-shadow:0 0 8px var(--a1);
 }
 @keyframes blink{50%{opacity:0;}}
-
 .role-wrap{font-family:var(--mono);font-size:1rem;color:var(--a2);letter-spacing:.04em;margin-bottom:10px;min-height:1.5em;}
 #role-text{border-right:2px solid var(--a2);padding-right:3px;animation:caretBlink 1s step-end infinite;}
 @keyframes caretBlink{50%{border-color:transparent;}}
 .hero-sub{font-family:var(--mono);font-size:.84rem;color:var(--muted);letter-spacing:.06em;margin-bottom:14px;}
 .hero-tag{font-size:1.12rem;color:var(--text2);margin-bottom:40px;max-width:500px;line-height:1.66;}
-
-/* ═══════════════════════════════════════
-   Buttons
-═══════════════════════════════════════ */
 .hbtns{display:flex;gap:13px;flex-wrap:wrap;}
 .btn1{
   display:inline-flex;align-items:center;gap:8px;
@@ -211,7 +177,6 @@ h1.hname{
 .btn1:hover::before{left:100%;}
 .btn1:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 0 50px rgba(56,189,248,.72),0 8px 24px rgba(56,189,248,.38);}
 .btn1:active{transform:translateY(-1px);}
-
 .btn2{
   display:inline-flex;align-items:center;gap:8px;
   font-family:var(--mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
@@ -221,24 +186,15 @@ h1.hname{
   transition:transform .24s,background .24s,box-shadow .24s;
 }
 .btn2:hover{transform:translateY(-4px) scale(1.02);background:rgba(56,189,248,.1);box-shadow:var(--glow1),inset 0 0 20px rgba(56,189,248,.04);}
-
 .stats{display:flex;gap:42px;margin-top:50px;border-top:1px solid var(--border);padding-top:32px;flex-wrap:wrap;}
 .sn{
   font-family:var(--dis);font-size:2.4rem;font-weight:800;color:var(--a1);
   text-shadow:0 0 18px rgba(56,189,248,.36);
 }
 .sl{font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
-
-/* ═══════════════════════════════════════
-   SECTION LABELS
-═══════════════════════════════════════ */
 .slabel{font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;color:var(--a1);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:9px;}
 .slabel::before{content:'';width:20px;height:1px;background:var(--a1);box-shadow:0 0 6px var(--a1);}
 h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:800;letter-spacing:-.022em;margin-bottom:46px;line-height:1.08;}
-
-/* ═══════════════════════════════════════
-   SKILL CARDS
-═══════════════════════════════════════ */
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:13px;}
 .sc{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
@@ -273,10 +229,6 @@ h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:
 .sc:nth-child(9) .sb{background:linear-gradient(90deg,#f472b6,#34d399);}
 .sc:nth-child(10) .sb{background:linear-gradient(90deg,#38bdf8,#f472b6);}
 .sc:nth-child(11) .sb{background:linear-gradient(90deg,#fbbf24,#818cf8);}
-
-/* ═══════════════════════════════════════
-   PROJECT CARDS
-═══════════════════════════════════════ */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:17px;}
 .pc{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
@@ -336,10 +288,6 @@ h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:
   backdrop-filter:blur(8px);position:relative;z-index:1;
 }
 .tpanel .tc{color:var(--a3);margin-bottom:7px;font-size:.68rem;}
-
-/* ═══════════════════════════════════════
-   CERTIFICATE CARDS
-═══════════════════════════════════════ */
 .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
 .cc{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
@@ -369,10 +317,6 @@ h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:
 .cname{font-family:var(--dis);font-size:.88rem;font-weight:700;margin-bottom:4px;color:var(--text);}
 .cdesc{color:var(--muted);font-size:.75rem;line-height:1.5;}
 .cbadge{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;padding:2px 9px;border-radius:50px;background:rgba(52,211,153,.12);color:var(--a3);box-shadow:0 0 7px rgba(52,211,153,.1);}
-
-/* ═══════════════════════════════════════
-   Frosted glass lightbox
-═══════════════════════════════════════ */
 .overlay{
   position:fixed;inset:0;
   background:rgba(0,0,0,.82);
@@ -394,10 +338,6 @@ h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:
   transition:opacity .2s,transform .2s;
 }
 .overlay-close:hover{opacity:1;transform:rotate(90deg);}
-
-/* ═══════════════════════════════════════
-   TIMELINE
-═══════════════════════════════════════ */
 .tl{position:relative;padding-left:28px;}
 .tl::before{
   content:'';position:absolute;left:5px;top:8px;bottom:8px;width:1px;
@@ -418,10 +358,6 @@ h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:
 .tly{font-family:var(--mono);font-size:.66rem;color:var(--a1);letter-spacing:.12em;margin-bottom:4px;}
 .tlt{font-family:var(--dis);font-size:1.18rem;font-weight:700;margin-bottom:6px;color:var(--text);}
 .tldesc{color:var(--text2);font-size:.85rem;line-height:1.6;}
-
-/* ═══════════════════════════════════════
-   RESUME LINKS
-═══════════════════════════════════════ */
 .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:34px;}
 .rl{
   display:flex;align-items:center;gap:12px;
@@ -446,10 +382,6 @@ h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:
 .rip{background:rgba(129,140,248,.13);}
 .rig{background:rgba(52,211,153,.13);}
 .rsub{font-size:.7rem;color:var(--muted);font-family:var(--mono);margin-top:2px;}
-
-/* ═══════════════════════════════════════
-   CHATBOT
-═══════════════════════════════════════ */
 .cfab{
   position:fixed;bottom:24px;right:24px;
   width:54px;height:54px;border-radius:50%;
@@ -497,47 +429,16 @@ h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:
 .cm .cl{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;margin-bottom:1px;}
 .cm.user .cl{color:var(--a2);}
 .cm.bot .cl{color:var(--a3);}
-
-/* ═══════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════ */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .72s cubic-bezier(.4,0,.2,1),transform .72s cubic-bezier(.4,0,.2,1);}
 .rv.show{opacity:1;transform:translateY(0);}
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
-
 .para-slow,.para-mid{will-change:transform;}
-
-/* ═══════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════ */
 footer{
   text-align:center;padding:34px 20px;
   font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.1em;
   border-top:1px solid var(--border);
   box-shadow:0 -1px 0 rgba(56,189,248,.06);
 }
-
-/* ═══════════════════════════════════════
-   FUTURE COMPETITIONS — upcoming badge style
-═══════════════════════════════════════ */
-.bup{background:rgba(56,189,248,.1);color:var(--a1);border:1px solid rgba(56,189,248,.25);box-shadow:0 0 12px rgba(56,189,248,.1);}
-.future-tag{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--a3);margin-bottom:6px;
-}
-.future-tag::before{content:'◉';font-size:.5rem;animation:ldot 2s infinite;}
-
-/* GFG logo badge */
-.gfg-logo{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:18px;height:18px;border-radius:4px;background:#2f8d46;flex-shrink:0;
-}
-.gfg-logo svg{width:12px;height:12px;}
-
-/* ═══════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════ */
 @media(max-width:720px){
   nav{padding:11px 16px;}
   .nav-r{gap:12px;}
@@ -557,20 +458,15 @@ footer{
 </head>
 <body>
 
-<!-- 3D ADD: ambient depth orbs -->
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
-
-<!-- 3D ADD: triple cursor layers -->
 <div id="cur"></div>
 <div id="cur-r"></div>
 <div id="cur-g"></div>
-
 <div class="grain"></div>
 <canvas id="bg"></canvas>
 
-<!-- image lightbox overlay -->
 <div class="overlay" id="overlay" onclick="closeOverlay()">
   <button class="overlay-close" onclick="closeOverlay()">✕</button>
   <img id="overlay-img" src="" alt="Certificate">
@@ -586,7 +482,6 @@ footer{
     <a href="#timeline">Journey</a>
     <a href="#resume">Resume</a>
     <a href="#certs">Certs</a>
-    <a href="#future">Future</a>
     <button class="tbtn" id="tbtn" onclick="toggleTheme()">☀ Light</button>
   </div>
 </nav>
@@ -594,349 +489,311 @@ footer{
 <!-- HERO -->
 <section id="hero">
   <div class="scanline"></div>
-<div class="wrap">
-  <div class="hero-chip rv para-slow"><span class="live-dot"></span>01 — Open to opportunities</div>
-  <h1 class="hname rv d1 para-mid">
-    <span class="np">Honey</span>
-    <span class="ng">Darji<span class="cblink"></span></span>
-  </h1>
-  <div class="role-wrap rv d2"><span id="role-text"></span></div>
-  <p class="hero-sub rv d2">BCA Student @ CHARUSAT · AI Developer · Builder</p>
-  <p class="hero-tag rv d3">I build scalable, smart, and real-world solutions — at the intersection of design, AI, and technology.</p>
-  <div class="hbtns rv d3">
-    <a href="#projects" class="btn1">
-      View Projects
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-    </a>
-    <a href="#resume" class="btn2">Contact Me →</a>
+  <div class="wrap">
+    <div class="hero-chip rv para-slow"><span class="live-dot"></span>01 — Open to opportunities</div>
+    <h1 class="hname rv d1 para-mid">
+      <span class="np">Honey</span>
+      <span class="ng">Darji<span class="cblink"></span></span>
+    </h1>
+    <div class="role-wrap rv d2"><span id="role-text"></span></div>
+    <p class="hero-sub rv d2">BCA Student @ CHARUSAT · 8.64 CGPA · AI Developer · Builder</p>
+    <p class="hero-tag rv d3">I build scalable, smart, and real-world solutions — at the intersection of design, AI, and technology.</p>
+    <div class="hbtns rv d3">
+      <a href="#projects" class="btn1">
+        View Projects
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="#resume" class="btn2">Contact Me →</a>
+    </div>
+    <div class="stats rv d4">
+      <div><div class="sn">5+</div><div class="sl">Competitions</div></div>
+      <div><div class="sn">10+</div><div class="sl">Certificates</div></div>
+      <div><div class="sn">#224</div><div class="sl">HackTheRank</div></div>
+    </div>
   </div>
-  <div class="stats rv d4">
-    <div><div class="sn">5+</div><div class="sl">Competitions</div></div>
-    <div><div class="sn">10+</div><div class="sl">Certificates</div></div>
-    <div><div class="sn">#224</div><div class="sl">HackTheRank</div></div>
-  </div>
-</div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-<div class="wrap">
-  <div class="slabel rv">02 — Proficiencies</div>
-  <h2 class="stitle rv">Skills &amp; Tools</h2>
-  <div class="sgrid">
-    <div class="sc rv"><div class="si">🌐</div><div class="sn2">HTML / CSS / JS</div><div class="sbw"><div class="sb" data-w="85"></div></div><div class="sp">85%</div></div>
-    <div class="sc rv d1"><div class="si">🐍</div><div class="sn2">Python</div><div class="sbw"><div class="sb" data-w="65"></div></div><div class="sp">65%</div></div>
-    <div class="sc rv d2"><div class="si">🎨</div><div class="sn2">UI/UX &amp; Figma</div><div class="sbw"><div class="sb" data-w="78"></div></div><div class="sp">78%</div></div>
-    <div class="sc rv d3"><div class="si">🐙</div><div class="sn2">Git &amp; GitHub</div><div class="sbw"><div class="sb" data-w="80"></div></div><div class="sp">80%</div></div>
-    <div class="sc rv"><div class="si">🤖</div><div class="sn2">AI Literacy</div><div class="sbw"><div class="sb" data-w="90"></div></div><div class="sp">90%</div></div>
-    <div class="sc rv d1"><div class="si">📊</div><div class="sn2">Data Analysis</div><div class="sbw"><div class="sb" data-w="70"></div></div><div class="sp">70%</div></div>
-    <div class="sc rv d2"><div class="si">📒</div><div class="sn2">Tally Prime</div><div class="sbw"><div class="sb" data-w="75"></div></div><div class="sp">75%</div></div>
-    <div class="sc rv d3"><div class="si">💼</div><div class="sn2">Microsoft Office 365</div><div class="sbw"><div class="sb" data-w="83"></div></div><div class="sp">83%</div></div>
-    <div class="sc rv"><div class="si">📈</div><div class="sn2">SEO &amp; Digital Marketing</div><div class="sbw"><div class="sb" data-w="68"></div></div><div class="sp">68%</div></div>
-    <div class="sc rv d1"><div class="si">🏆</div><div class="sn2">Hackathon Experience</div><div class="sbw"><div class="sb" data-w="92"></div></div><div class="sp">92%</div></div>
-    <div class="sc rv d2"><div class="si">🤝</div><div class="sn2">Teamwork &amp; Leadership</div><div class="sbw"><div class="sb" data-w="88"></div></div><div class="sp">88%</div></div>
+  <div class="wrap">
+    <div class="slabel rv">02 — Proficiencies</div>
+    <h2 class="stitle rv">Skills &amp; Tools</h2>
+    <div class="sgrid">
+      <div class="sc rv"><div class="si">🌐</div><div class="sn2">HTML / CSS / JS</div><div class="sbw"><div class="sb" data-w="85"></div></div><div class="sp">85%</div></div>
+      <div class="sc rv d1"><div class="si">🐍</div><div class="sn2">Python</div><div class="sbw"><div class="sb" data-w="65"></div></div><div class="sp">65%</div></div>
+      <div class="sc rv d2"><div class="si">🎨</div><div class="sn2">UI/UX &amp; Figma</div><div class="sbw"><div class="sb" data-w="78"></div></div><div class="sp">78%</div></div>
+      <div class="sc rv d3"><div class="si">🐙</div><div class="sn2">Git &amp; GitHub</div><div class="sbw"><div class="sb" data-w="80"></div></div><div class="sp">80%</div></div>
+      <div class="sc rv"><div class="si">🤖</div><div class="sn2">AI Literacy</div><div class="sbw"><div class="sb" data-w="90"></div></div><div class="sp">90%</div></div>
+      <div class="sc rv d1"><div class="si">📊</div><div class="sn2">Data Analysis</div><div class="sbw"><div class="sb" data-w="70"></div></div><div class="sp">70%</div></div>
+      <div class="sc rv d2"><div class="si">📒</div><div class="sn2">Tally Prime</div><div class="sbw"><div class="sb" data-w="75"></div></div><div class="sp">75%</div></div>
+      <div class="sc rv d3"><div class="si">💼</div><div class="sn2">Microsoft Office 365</div><div class="sbw"><div class="sb" data-w="83"></div></div><div class="sp">83%</div></div>
+      <div class="sc rv"><div class="si">📈</div><div class="sn2">SEO &amp; Digital Marketing</div><div class="sbw"><div class="sb" data-w="68"></div></div><div class="sp">68%</div></div>
+      <div class="sc rv d1"><div class="si">🏆</div><div class="sn2">Hackathon Experience</div><div class="sbw"><div class="sb" data-w="92"></div></div><div class="sp">92%</div></div>
+      <div class="sc rv d2"><div class="si">🤝</div><div class="sn2">Teamwork &amp; Leadership</div><div class="sbw"><div class="sb" data-w="88"></div></div><div class="sp">88%</div></div>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
-<div class="wrap">
-  <div class="slabel rv">03 — Work</div>
-  <h2 class="stitle rv">Projects &amp; Hackathons</h2>
-  <div class="pgrid">
-    <!-- ORIGINAL CARDS -->
-    <div class="pc feat rv">
-      <div>
-        <div class="pbadge bai">⭐ Featured Project</div>
-        <h3>VendorGo — AI Platform</h3>
-        <p>Production-ready AI-powered digital presence platform for India's 50M+ street vendors. WhatsApp automation, AI catalogue generation, zero-tech-barrier onboarding — go digital in under 5 minutes.</p>
-        <a href="vendorGo-about.html" target="_blank" class="plink">Explore VendorGo →</a>
+  <div class="wrap">
+    <div class="slabel rv">03 — Work</div>
+    <h2 class="stitle rv">Projects &amp; Hackathons</h2>
+    <div class="pgrid">
+      <div class="pc feat rv">
+        <div>
+          <div class="pbadge bai">⭐ Featured Project</div>
+          <h3>VendorGo — AI Platform</h3>
+          <p>Production-ready AI-powered digital presence platform for India's 50M+ street vendors. WhatsApp automation, AI catalogue generation, zero-tech-barrier onboarding — go digital in under 5 minutes.</p>
+          <a href="vendorGo-about.html" target="_blank" class="plink">Explore VendorGo →</a>
+        </div>
+        <div class="tpanel">
+          <div class="tc">// tech stack</div>
+          <div>→ WhatsApp Business API</div>
+          <div>→ AI / LLM Integration</div>
+          <div>→ HTML / CSS / JS Frontend</div>
+          <div>→ No-Code Vendor Dashboard</div>
+          <div>→ SEO &amp; Digital Presence</div>
+          <div style="margin-top:11px;color:var(--a1);">50M+ target users</div>
+        </div>
+        <div class="pglow"></div>
       </div>
-      <div class="tpanel">
-        <div class="tc">// tech stack</div>
-        <div>→ WhatsApp Business API</div>
-        <div>→ AI / LLM Integration</div>
-        <div>→ HTML / CSS / JS Frontend</div>
-        <div>→ No-Code Vendor Dashboard</div>
-        <div>→ SEO &amp; Digital Presence</div>
-        <div style="margin-top:11px;color:var(--a1);">50M+ target users</div>
+      <div class="pc rv">
+        <div class="pbadge brk">💻</div>
+        <h3>PU-CODE Hackathon 3.0</h3>
+        <p>Participated at Parul University competitive coding hackathon. Logic-driven problem solving under intense time pressure.</p>
+        <a href="pucodecertificate.jpeg" target="_blank" class="plink">View Certificate →</a>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
       </div>
-      <div class="pglow"></div>
+      <div class="pc rv d1">
+        <div class="pbadge bhk">⚡ Hackathon</div>
+        <h3>Tech-Tonic Hackathon</h3>
+        <p>High-pressure team hackathon focused on rapid prototyping, collaborative engineering, and logic-driven product delivery.</p>
+        <a href="techtoniccertifiacte.jpeg" target="_blank" class="plink">View Certificate →</a>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(129,140,248,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv d2">
+        <div class="pbadge bhk">🌐 GDG</div>
+        <h3>GDG Hackathon</h3>
+        <p>Google Developer Group hackathon — project showcase and collaborative development gaining exposure to the Google tech ecosystem.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv">
+        <div class="pbadge bqz">🧠 AI Quiz</div>
+        <h3>Techedge: Future Clash AI Quiz</h3>
+        <p>AI-focused quiz at Techedge showcasing AI Literacy, knowledge of emerging models, and real-world AI application understanding.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(244,114,182,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv d1">
+        <div class="pbadge brk">🏅 Rank #224</div>
+        <h3>HackTheRank Competition</h3>
+        <p>Secured Rank #224 in the HackTheRank competitive programming challenge on a national platform — strong algorithmic thinking.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv d2">
+        <div class="pbadge bpt">🎤 Pitching</div>
+        <h3>Charusat National Youth Day Pitching</h3>
+        <p>Presented real-world tech solutions at CHARUSAT's National Youth Day event — entrepreneurial communication and product ideation.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(251,191,36,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv">
+        <div class="pbadge bai">🧠 AI/ML · 3rd Place · 💰 Cash Prize</div>
+        <h3>Poster Competition</h3>
+        <p>Secured 3rd position and won a cash prize in the Poster Competition on "Fraud Detection in Financial Systems" — showcasing AI/ML-driven anomaly detection and financial security concepts through visual storytelling.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv d1">
+        <div class="pbadge brk">🏅 3rd Place</div>
+        <h3>Portfolio Development Competition</h3>
+        <p>Secured 3rd position in a Portfolio Development competition — recognized for clean UI design, responsive layout, and professional presentation of projects and skills.</p>
+        <a href="#certs" class="plink">View Achievement →</a>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv d2">
+        <div class="pbadge bpt">🔥 WebForge · Rank 3</div>
+        <h3>WebForge Competition</h3>
+        <p>Secured Rank 3 in WebForge — a web development competition focused on building polished, production-grade frontend experiences under competitive conditions.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(251,191,36,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv d3">
+        <div class="pbadge bhk">⚡ Tech Edge</div>
+        <h3>Tech Edge Competition</h3>
+        <p>Competed at Tech Edge — a competitive technical event showcasing problem-solving skills and tech knowledge.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(129,140,248,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv">
+        <div class="pbadge bai">🛡️ Web App</div>
+        <h3>Spam Detection System</h3>
+        <p>Real-time text classification tool to identify and filter spam messages using keyword-based detection logic — clean UI with instant result feedback.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);"></div>
+      </div>
+      <div class="pc rv d1">
+        <div class="pbadge brk">💸 Finance</div>
+        <h3>PocketPal — Expense Manager</h3>
+        <p>Fully responsive personal expense tracking web app — log, categorize, and monitor spending with dynamic add/delete and LocalStorage persistence.</p>
+        <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
+      </div>
     </div>
-    <div class="pc rv">
-      <div class="pbadge brk">💻</div>
-      <h3>PU-CODE Hackathon 3.0</h3>
-      <p>participated at Parul University competitive coding hackathon. Logic-driven problem solving under intense time pressure.</p>
-      <a href="pucodecertificate.jpeg" target="_blank" class="plink">View Certificate →</a>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
-    </div>
-    <div class="pc rv d1">
-      <div class="pbadge bhk">⚡ Hackathon</div>
-      <h3>Tech-Tonic Hackathon</h3>
-      <p>High-pressure team hackathon focused on rapid prototyping, collaborative engineering, and logic-driven product delivery.</p>
-      <a href="techtoniccertifiacte.jpeg" target="_blank" class="plink">View Certificate →</a>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(129,140,248,.1),transparent 70%);"></div>
-    </div>
-    <div class="pc rv d2">
-      <div class="pbadge bhk">🌐 GDG</div>
-      <h3>GDG Hackathon</h3>
-      <p>Google Developer Group hackathon — project showcase and collaborative development gaining exposure to the Google tech ecosystem.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);"></div>
-    </div>
-    <div class="pc rv">
-      <div class="pbadge bqz">🧠 AI Quiz</div>
-      <h3>Techedge: Future Clash AI Quiz</h3>
-      <p>AI-focused quiz at Techedge showcasing AI Literacy, knowledge of emerging models, and real-world AI application understanding.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(244,114,182,.1),transparent 70%);"></div>
-    </div>
-    <div class="pc rv d1">
-      <div class="pbadge brk">🏅 Rank #224</div>
-      <h3>HackTheRank Competition</h3>
-      <p>Secured Rank #224 in the HackTheRank competitive programming challenge on a national platform — strong algorithmic thinking.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
-    </div>
-    <div class="pc rv d2">
-      <div class="pbadge bpt">🎤 Pitching</div>
-      <h3>Charusat National Youth Day Pitching</h3>
-      <p>Presented real-world tech solutions at CHARUSAT's National Youth Day event — entrepreneurial communication and product ideation.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(251,191,36,.1),transparent 70%);"></div>
-    </div>
-
-    <!-- ═══ NEW PROJECT CARDS (ADDED) ═══ -->
-    <div class="pc rv">
-      <div class="pbadge bai">🧠 AI/ML · 3rd Place · 💰 Cash Prize</div>
-      <h3> Poster Competition</h3>
-      <p>Secured 3rd position and won a cash prize in the Poster Competition on "Fraud Detection in Financial Systems" — showcasing AI/ML-driven anomaly detection and financial security concepts through visual storytelling.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);"></div>
-    </div>
-    <div class="pc rv d1">
-      <div class="pbadge brk">🏅 3rd Place</div>
-      <h3>Portfolio Development Competition</h3>
-      <p>Secured 3rd position in a Portfolio Development competition — recognized for clean UI design, responsive layout, and professional presentation of projects and skills.</p>
-      <a href="#certs" class="plink">View Achievement →</a>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
-    </div>
-    <div class="pc rv d2">
-      <div class="pbadge bpt">🔥 WebForge</div>
-      <h3>WebForge Competition</h3>
-      <p>Completed WebForge — a web development competition focused on building polished, production-grade frontend experiences under competitive conditions.secured 3rd postion</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(251,191,36,.1),transparent 70%);"></div>
-    </div>
-    <div class="pc rv d3">
-      <div class="pbadge bhk">⚡ Tech Edge</div>
-      <h3>Tech Edge Competition</h3>
-      <p>Competed at Tech Edge — a competitive technical event showcasing problem-solving skills and tech knowledge.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(129,140,248,.1),transparent 70%);"></div>
-    </div>
-    <!-- ═══ END NEW PROJECT CARDS ═══ -->
-
   </div>
-</div>
 </section>
 
 <!-- TIMELINE -->
 <section id="timeline">
-<div class="wrap">
-  <div class="slabel rv">04 — Journey</div>
-  <h2 class="stitle rv">My Path So Far</h2>
-  <div class="tl">
-    <div class="tli"><div class="tld"></div>
-      <div class="tly">2025 — Present</div>
-      <div class="tlt">BCA @ CHARUSAT University</div>
-      <div class="tldesc">Pursuing BCA with strong foundations in CS, programming logic, data analysis, and software engineering principles.</div>
-    </div>
-    <div class="tli"><div class="tld" style="border-color:var(--a2);box-shadow:0 0 9px rgba(129,140,248,.5);"></div>
-      <div class="tly">2025</div>
-      <div class="tlt">Hackathons &amp; AI Competitions</div>
-      <div class="tldesc">Competed in Tech-Tonic, PU-CODE, GDG Hackathon, HackTheRank (#224), Techedge AI Quiz, National Youth Day Pitching, Poster making compietition, Webforge, etc.</div>
-    </div>
-    <div class="tli"><div class="tld" style="border-color:var(--a4);box-shadow:0 0 9px rgba(244,114,182,.5);"></div>
-      <div class="tly">2025</div>
-      <div class="tlt">VendorGo — AI-Powered Platform</div>
-      <div class="tldesc">Conceived and built VendorGo — production-grade AI platform for India's 50M+ street vendors with WhatsApp automation.</div>
-    </div>
-    <div class="tli"><div class="tld" style="border-color:var(--a3);box-shadow:0 0 9px rgba(52,211,153,.5);"></div>
-      <div class="tly">2025</div>
-      <div class="tlt">Certifications &amp; Volunteering</div>
-      <div class="tldesc">Earned AI Literacy, Tally Prime, Microsoft Office 365, Ignite, and NSS volunteering certificates. Cross-domain competence built.</div>
-    </div>
-    <div class="tli"><div class="tld" style="border-color:var(--a1);background:rgba(56,189,248,.18);box-shadow:0 0 11px rgba(56,189,248,.6);"></div>
-      <div class="tly">2025 → Future</div>
-      <div class="tlt">Full-Stack AI Developer &amp; Specialist</div>
-      <div class="tldesc">Advancing toward mastery in AI systems, scalable web development, and entrepreneurial product building.</div>
+  <div class="wrap">
+    <div class="slabel rv">04 — Journey</div>
+    <h2 class="stitle rv">My Path So Far</h2>
+    <div class="tl">
+      <div class="tli"><div class="tld"></div>
+        <div class="tly">2025 — Present</div>
+        <div class="tlt">BCA @ CHARUSAT University</div>
+        <div class="tldesc">Pursuing BCA with strong foundations in CS, programming logic, data analysis, and software engineering principles.</div>
+      </div>
+      <div class="tli"><div class="tld" style="border-color:var(--a2);box-shadow:0 0 9px rgba(129,140,248,.5);"></div>
+        <div class="tly">2025</div>
+        <div class="tlt">Hackathons &amp; AI Competitions</div>
+        <div class="tldesc">Competed in Tech-Tonic, PU-CODE, GDG Hackathon, HackTheRank (#224), Techedge AI Quiz, National Youth Day Pitching, Poster making competition, Webforge (Rank 3), and more.</div>
+      </div>
+      <div class="tli"><div class="tld" style="border-color:var(--a4);box-shadow:0 0 9px rgba(244,114,182,.5);"></div>
+        <div class="tly">2025</div>
+        <div class="tlt">VendorGo — AI-Powered Platform</div>
+        <div class="tldesc">Conceived and built VendorGo — production-grade AI platform for India's 50M+ street vendors with WhatsApp automation.</div>
+      </div>
+      <div class="tli"><div class="tld" style="border-color:var(--a3);box-shadow:0 0 9px rgba(52,211,153,.5);"></div>
+        <div class="tly">2025</div>
+        <div class="tlt">Certifications &amp; Volunteering</div>
+        <div class="tldesc">Earned AI Literacy, Tally Prime, Microsoft Office 365, Ignite, and NSS volunteering certificates. Cross-domain competence built.</div>
+      </div>
+      <div class="tli"><div class="tld" style="border-color:var(--a1);background:rgba(56,189,248,.18);box-shadow:0 0 11px rgba(56,189,248,.6);"></div>
+        <div class="tly">2025 → Future</div>
+        <div class="tlt">Full-Stack AI Developer &amp; Specialist</div>
+        <div class="tldesc">Advancing toward mastery in AI systems, scalable web development, and entrepreneurial product building.</div>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 <!-- RESUME -->
 <section id="resume">
-<div class="wrap">
-  <div class="slabel rv">05 — Connect</div>
-  <h2 class="stitle rv">Resume &amp; Links</h2>
-  <div class="rgrid rv">
-    <a href="HONEYDARJI_RESUME (2).pdf" download class="rl">
-      <div class="ri rir">📄</div>
-      <div><div>Download Resume</div><div class="rsub">PDF · Updated 2024</div></div>
-    </a>
-    <a href="HONEYDARJI_RESUME (2).pdf" target="_blank" class="rl">
-      <div class="ri rib">🔗</div>
-      <div><div>View Resume</div><div class="rsub">Opens in new tab</div></div>
-    </a>
-    <a href="https://github.com/darjihoney02-web" target="_blank" class="rl">
-      <div class="ri rib">🐙</div>
-      <div><div>GitHub</div><div class="rsub">darjihoney02-web</div></div>
-    </a>
-    <a href="https://www.linkedin.com/in/honey-darji-0202S78371" target="_blank" class="rl">
-      <div class="ri rip">💼</div>
-      <div><div>LinkedIn</div><div class="rsub">honey-darji</div></div>
-    </a>
+  <div class="wrap">
+    <div class="slabel rv">05 — Connect</div>
+    <h2 class="stitle rv">Resume &amp; Links</h2>
+    <div class="rgrid rv">
+      <a href="HONEYDARJI_RESUME (2).pdf" download class="rl">
+        <div class="ri rir">📄</div>
+        <div><div>Download Resume</div><div class="rsub">PDF · Updated 2024</div></div>
+      </a>
+      <a href="HONEYDARJI_RESUME (2).pdf" target="_blank" class="rl">
+        <div class="ri rib">🔗</div>
+        <div><div>View Resume</div><div class="rsub">Opens in new tab</div></div>
+      </a>
+      <a href="mailto:darjihoney02@gmail.com" class="rl">
+        <div class="ri rig">✉️</div>
+        <div><div>Email Me</div><div class="rsub">darjihoney02@gmail.com</div></div>
+      </a>
+      <a href="https://github.com/darjihoney02-web" target="_blank" class="rl">
+        <div class="ri rib">🐙</div>
+        <div><div>GitHub</div><div class="rsub">darjihoney02-web</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/honey-darji-0202S78371" target="_blank" class="rl">
+        <div class="ri rip">💼</div>
+        <div><div>LinkedIn</div><div class="rsub">honey-darji</div></div>
+      </a>
+    </div>
   </div>
-</div>
 </section>
 
 <!-- CERTIFICATES -->
 <section id="certs">
-<div class="wrap">
-  <div class="slabel rv">06 — Achievements</div>
-  <h2 class="stitle rv">Certificates &amp; Achievements</h2>
-  <div class="cgrid">
-    <!-- ORIGINAL CERT CARDS -->
-    <div class="cc rv" onclick="openCert('tallycertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">📒</span><img src="tallycertificate.jpeg" alt="Tally Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">Tally Prime</div><div class="cdesc">Accounting &amp; ERP fundamentals.</div><span class="cbadge">Certified</span></div>
-    </div>
-    <div class="cc rv d1" onclick="openCert('msofficecertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">💼</span><img src="msofficecertificate.jpeg" alt="MS Office Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">Microsoft Office 365</div><div class="cdesc">Office &amp; productivity training.</div><span class="cbadge">Certified</span></div>
-    </div>
-    <div class="cc rv d2" onclick="openCert('pucodecertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">💻</span><img src="pucodecertificate.jpeg" alt="PU Code Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">PU-CODE 3.0</div><div class="cdesc">Parul University hackathon.</div><span class="cbadge" style="background:rgba(251,191,36,.14);color:var(--a5);">participated</span></div>
-    </div>
-    <div class="cc rv d3" onclick="openCert('techtoniccertifiacte.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">⚡</span><img src="techtoniccertifiacte.jpeg" alt="Tech-Tonic Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">Tech-Tonic Hackathon</div><div class="cdesc">Hackathon participation &amp; completion.</div><span class="cbadge">Participated</span></div>
-    </div>
-    <div class="cc rv" onclick="openCert('nsscertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">🤝</span><img src="nsscertificate.jpeg" alt="NSS Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">CMPICA NSS Patriotica</div><div class="cdesc">Student volunteer service.</div><span class="cbadge">Volunteer</span></div>
-    </div>
-    <div class="cc rv d1" onclick="openCert('ignitecertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">🔥</span><img src="ignitecertificate.jpeg" alt="Ignite Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">Ignite Certificate</div><div class="cdesc">Student volunteer activity.</div><span class="cbadge">participated</span></div>
-    </div>
-    <div class="cc rv d2" onclick="openCert('ailiteracycertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">🤖</span><img src="ailiteracycertificate.jpeg" alt="AI Literacy Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">AI Literacy</div><div class="cdesc">Foundational AI knowledge &amp; tools.</div><span class="cbadge">Certified</span></div>
-    </div>
-    <div class="cc rv d3" onclick="openCert('hacktherankcertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">🏅</span><img src="hacktherankcertificate.jpeg" alt="HackTheRank Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">HackTheRank</div><div class="cdesc">National competitive programming.</div><span class="cbadge" style="background:rgba(129,140,248,.14);color:var(--a2);">Rank #224</span></div>
-    </div>
-    <div class="cc rv" onclick="openCert('gdgcertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">🌐</span><img src="gdgcertificate.jpeg" alt="GDG Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">GDG Hackathon</div><div class="cdesc">Google Developer Group event.</div><span class="cbadge">Participated</span></div>
-    </div>
-    <div class="cc rv d1" onclick="openCert('techedgecertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">🧠</span><img src="techedgecertificate.jpeg" alt="Techedge Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">Future Clash AI Quiz</div><div class="cdesc">Techedge AI competition.</div><span class="cbadge">Participated</span></div>
-    </div>
-
-    <!-- ═══ NEW CERTIFICATE CARDS (ADDED) ═══ -->
-    <div class="cc rv d2" onclick="openCert('webforgecertificate.jpeg')">
-      <div class="cimg-wrap"><span class="fallback">🔥</span><img src="webforgecertificate.jpeg" alt="WebForge Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
-      <div class="cinfo"><div class="cname">WebForge</div><div class="cdesc">Web development competition certificate.</div><span class="cbadge">Completed</span></div>
-    </div>
-    <div class="cc rv d3">
-      <div class="cimg-wrap"><span class="fallback">🏅</span></div>
-      <div class="cinfo"><div class="cname">Portfolio Development</div><div class="cdesc">3rd position in Portfolio Development Competition.</div><span class="cbadge" style="background:rgba(52,211,153,.14);color:var(--a3);">3rd Place</span></div>
-    </div>
-    <div class="cc rv">
-      <div class="cimg-wrap"><span class="fallback">🧠</span></div>
-      <div class="cinfo"><div class="cname"> Poster compition</div><div class="cdesc">3rd place + cash prize — "Fraud Detection in Financial Systems".</div><span class="cbadge" style="background:rgba(52,211,153,.14);color:var(--a3);">3rd Place · 💰 Cash Prize</span></div>
-    </div>
-    <div class="cc rv d1">
-      <div class="cimg-wrap"><span class="fallback">⚡</span></div>
-      <div class="cinfo"><div class="cname">Tech Edge Competition</div><div class="cdesc">Competitive technical event participation.</div><span class="cbadge">Participated</span></div>
-    </div>
-    <!-- ═══ END NEW CERTIFICATE CARDS ═══ -->
-
-  </div>
-  <p style="font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:18px;opacity:.7;">
-    💡 Click any certificate card to view full image. If an image isn't uploaded yet, the emoji placeholder shows.
-  </p>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     NEW SECTION: FUTURE COMPETITIONS (ADDED)
-═══════════════════════════════════════ -->
-<section id="future">
-<div class="wrap">
-  <div class="slabel rv">07 — Upcoming</div>
-  <h2 class="stitle rv">Future Competitions</h2>
-  <div class="pgrid">
-
-    <!-- AI/ML Mania by HackuVerse -->
-    <div class="pc rv">
-      <div class="future-tag">Upcoming</div>
-      <div class="pbadge bai">🤖 AI/ML</div>
-      <h3>AI/ML Mania — HackuVerse</h3>
-      <p>Upcoming AI &amp; Machine Learning hackathon by HackuVerse — competing in model building, data challenges, and real-world AI problem-solving at scale.</p>
-      <div class="pglow"></div>
-    </div>
-
-    <!-- GeeksforGeeks Competitions -->
-    <div class="pc rv d1">
-      <div class="future-tag">Upcoming</div>
-      <div class="pbadge" style="background:rgba(47,141,70,.13);color:#4caf50;box-shadow:0 0 10px rgba(47,141,70,.12);display:inline-flex;align-items:center;gap:6px;">
-        <span class="gfg-logo">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 12C4 8.686 6.686 6 10 6h1v2h-1C7.791 8 6 9.791 6 12s1.791 4 4 4h1v2h-1C6.686 18 4 15.314 4 12z" fill="#fff"/>
-            <path d="M20 12c0 3.314-2.686 6-6 6h-1v-2h1c2.209 0 4-1.791 4-4s-1.791-4-4-4h-1V6h1c3.314 0 6 2.686 6 6z" fill="#fff"/>
-            <line x1="9" y1="12" x2="15" y2="12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        GFG Competitions
+  <div class="wrap">
+    <div class="slabel rv">06 — Achievements</div>
+    <h2 class="stitle rv">Certificates &amp; Achievements</h2>
+    <div class="cgrid">
+      <div class="cc rv" onclick="openCert('tallycertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">📒</span><img src="tallycertificate.jpeg" alt="Tally Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">Tally Prime</div><div class="cdesc">Accounting &amp; ERP fundamentals.</div><span class="cbadge">Certified</span></div>
       </div>
-      <h3>GeeksforGeeks Competitions</h3>
-      <p>Competitive programming and technical challenges hosted on GeeksforGeeks platform — DSA, coding rounds, and algorithm-focused contests.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(47,141,70,.12),transparent 70%);"></div>
+      <div class="cc rv d1" onclick="openCert('msofficecertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">💼</span><img src="msofficecertificate.jpeg" alt="MS Office Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">Microsoft Office 365</div><div class="cdesc">Office &amp; productivity training.</div><span class="cbadge">Certified</span></div>
+      </div>
+      <div class="cc rv d2" onclick="openCert('pucodecertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">💻</span><img src="pucodecertificate.jpeg" alt="PU Code Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">PU-CODE 3.0</div><div class="cdesc">Parul University hackathon.</div><span class="cbadge" style="background:rgba(251,191,36,.14);color:var(--a5);">Participated</span></div>
+      </div>
+      <div class="cc rv d3" onclick="openCert('techtoniccertifiacte.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">⚡</span><img src="techtoniccertifiacte.jpeg" alt="Tech-Tonic Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">Tech-Tonic Hackathon</div><div class="cdesc">Hackathon participation &amp; completion.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv" onclick="openCert('nsscertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">🤝</span><img src="nsscertificate.jpeg" alt="NSS Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">CMPICA NSS Patriotica</div><div class="cdesc">Student volunteer service.</div><span class="cbadge">Volunteer</span></div>
+      </div>
+      <div class="cc rv d1" onclick="openCert('ignitecertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">🔥</span><img src="ignitecertificate.jpeg" alt="Ignite Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">Ignite Certificate</div><div class="cdesc">Student volunteer activity.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv d2" onclick="openCert('ailiteracycertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">🤖</span><img src="ailiteracycertificate.jpeg" alt="AI Literacy Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">AI Literacy</div><div class="cdesc">Foundational AI knowledge &amp; tools.</div><span class="cbadge">Certified</span></div>
+      </div>
+      <div class="cc rv d3" onclick="openCert('hacktherankcertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">🏅</span><img src="hacktherankcertificate.jpeg" alt="HackTheRank Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">HackTheRank</div><div class="cdesc">National competitive programming.</div><span class="cbadge" style="background:rgba(129,140,248,.14);color:var(--a2);">Rank #224</span></div>
+      </div>
+      <div class="cc rv" onclick="openCert('gdgcertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">🌐</span><img src="gdgcertificate.jpeg" alt="GDG Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">GDG Hackathon</div><div class="cdesc">Google Developer Group event.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv d1" onclick="openCert('techedgecertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">🧠</span><img src="techedgecertificate.jpeg" alt="Techedge Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">Future Clash AI Quiz</div><div class="cdesc">Techedge AI competition.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv d2" onclick="openCert('webforgecertificate.jpeg')">
+        <div class="cimg-wrap"><span class="fallback">🔥</span><img src="webforgecertificate.jpeg" alt="WebForge Certificate" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('error')"></div>
+        <div class="cinfo"><div class="cname">WebForge</div><div class="cdesc">Web development competition — Rank 3.</div><span class="cbadge" style="background:rgba(52,211,153,.14);color:var(--a3);">Rank 3</span></div>
+      </div>
+      <div class="cc rv d3">
+        <div class="cimg-wrap"><span class="fallback">🏅</span></div>
+        <div class="cinfo"><div class="cname">Portfolio Development</div><div class="cdesc">3rd position in Portfolio Development Competition.</div><span class="cbadge" style="background:rgba(52,211,153,.14);color:var(--a3);">3rd Place</span></div>
+      </div>
+      <div class="cc rv">
+        <div class="cimg-wrap"><span class="fallback">🧠</span></div>
+        <div class="cinfo"><div class="cname">Poster Competition</div><div class="cdesc">3rd place + cash prize — "Fraud Detection in Financial Systems".</div><span class="cbadge" style="background:rgba(52,211,153,.14);color:var(--a3);">3rd Place · 💰 Cash Prize</span></div>
+      </div>
+      <div class="cc rv d1">
+        <div class="cimg-wrap"><span class="fallback">⚡</span></div>
+        <div class="cinfo"><div class="cname">Tech Edge Competition</div><div class="cdesc">Competitive technical event participation.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv d2">
+        <div class="cimg-wrap"><span class="fallback">🤖</span></div>
+        <div class="cinfo"><div class="cname">AI/ML Mania — HackuVerse</div><div class="cdesc">Participated in AI/ML Hackathon.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv d3">
+        <div class="cimg-wrap"><span class="fallback">💻</span></div>
+        <div class="cinfo"><div class="cname">GeeksforGeeks Competitions</div><div class="cdesc">Participated in Coding &amp; DSA Competitions.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv">
+        <div class="cimg-wrap"><span class="fallback">🧩</span></div>
+        <div class="cinfo"><div class="cname">OutThinkX</div><div class="cdesc">Participated in Critical Thinking Competition.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv d1">
+        <div class="cimg-wrap"><span class="fallback">📚</span></div>
+        <div class="cinfo"><div class="cname">HTL Knowledge Quest</div><div class="cdesc">Secured 12th Rank.</div><span class="cbadge" style="background:rgba(251,191,36,.14);color:var(--a5);">🏅 Rank 12</span></div>
+      </div>
+      <div class="cc rv d2">
+        <div class="cimg-wrap"><span class="fallback">🔐</span></div>
+        <div class="cinfo"><div class="cname">QuizCore Cybersecurity — Codexa Phantom</div><div class="cdesc">Participated in Cybersecurity Competition.</div><span class="cbadge">Participated</span></div>
+      </div>
+      <div class="cc rv d3">
+        <div class="cimg-wrap"><span class="fallback">🚀</span></div>
+        <div class="cinfo"><div class="cname">Career Glow-up Night — Nano Banana</div><div class="cdesc">Participated in AI Innovation &amp; Pitching Event.</div><span class="cbadge">Participated</span></div>
+      </div>
     </div>
-
-    <!-- OutThinkX -->
-    <div class="pc rv d2">
-      <div class="future-tag">Upcoming</div>
-      <div class="pbadge bhk">🧩 OutThinkX</div>
-      <h3>OutThinkX</h3>
-      <p>A critical thinking and problem-solving competition pushing boundaries of logic, innovation, and lateral thinking under time-pressured scenarios.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(129,140,248,.1),transparent 70%);"></div>
-    </div>
-
-    <!-- HTL Knowledge Quest -->
-    <div class="pc rv">
-      <div class="future-tag">Upcoming</div>
-      <div class="pbadge bpt">📚 HTL</div>
-      <h3>HTL Knowledge Quest</h3>
-      <p>Interdisciplinary knowledge competition testing tech awareness, general aptitude, and domain-specific expertise across multiple competitive rounds.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(251,191,36,.1),transparent 70%);"></div>
-    </div>
-
-    <!-- QuizCore Cybersecurity by Codexa Phantom -->
-    <div class="pc rv d1">
-      <div class="future-tag">Upcoming</div>
-      <div class="pbadge bqz">🔐 Cybersecurity</div>
-      <h3>QuizCore Cybersecurity — Codexa Phantom</h3>
-      <p>Cybersecurity-focused quiz competition by Codexa Phantom — covering ethical hacking, network security, encryption, and emerging threat landscapes.</p>
-      <div class="pglow" style="background:radial-gradient(circle,rgba(244,114,182,.1),transparent 70%);"></div>
-    </div>
-
+    <p style="font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:18px;opacity:.7;">
+      💡 Click any certificate card to view full image. If an image isn't uploaded yet, the emoji placeholder shows.
+    </p>
   </div>
-</div>
 </section>
-<!-- ═══ END FUTURE COMPETITIONS SECTION ═══ -->
 
 <footer>
   <div style="margin-bottom:5px;">✦ Honey Darji — BCA Developer &amp; AI Enthusiast ✦</div>
@@ -962,14 +819,10 @@ footer{
 </div>
 
 <script>
-/* ════════════════════════════════════════
-   Triple-layer cursor animation
-════════════════════════════════════════ */
 const cur=document.getElementById("cur"),
       ring=document.getElementById("cur-r"),
       glw=document.getElementById("cur-g");
 let mx=0,my=0, rx=0,ry=0, gx=0,gy=0;
-
 document.addEventListener("mousemove",e=>{
   mx=e.clientX; my=e.clientY;
   cur.style.left=mx+"px"; cur.style.top=my+"px";
@@ -981,15 +834,11 @@ document.addEventListener("mousemove",e=>{
   glw.style.left=gx+"px"; glw.style.top=gy+"px";
   requestAnimationFrame(animCursor);
 })();
-
 document.querySelectorAll("a,button,.sc,.pc,.cc,.qb,.rl").forEach(el=>{
   el.addEventListener("mouseenter",()=>document.body.classList.add("ch"));
   el.addEventListener("mouseleave",()=>document.body.classList.remove("ch"));
 });
 
-/* ════════════════════════════════════════
-   CANVAS — neural net
-════════════════════════════════════════ */
 const cv=document.getElementById("bg"),cx=cv.getContext("2d");
 let W,H,pts=[];
 function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
@@ -1018,10 +867,7 @@ function draw(){
 }
 draw();
 
-/* ════════════════════════════════════════
-   TYPING ROLE EFFECT
-════════════════════════════════════════ */
-const roles=["AI Developer 🤖","Hackathon Enthusiast 🚀","A Good Learner 💻","VendorGo  ⭐"];
+const roles=["AI Developer 🤖","Hackathon Enthusiast 🚀","A Good Learner 💻","VendorGo Creator ⭐"];
 let ri=0,ci=0,del=false;
 const rt=document.getElementById("role-text");
 function typeRole(){
@@ -1033,18 +879,12 @@ function typeRole(){
 }
 typeRole();
 
-/* ════════════════════════════════════════
-   THEME
-════════════════════════════════════════ */
 function toggleTheme(){
   const h=document.documentElement,lt=h.getAttribute("data-theme")==="light";
   h.setAttribute("data-theme",lt?"dark":"light");
   document.getElementById("tbtn").textContent=lt?"☀ Light":"🌙 Dark";
 }
 
-/* ════════════════════════════════════════
-   Magnetic card tilt system
-════════════════════════════════════════ */
 function applyTilt(selector, maxDeg=10){
   if(window.innerWidth < 720) return;
   document.querySelectorAll(selector).forEach(card=>{
@@ -1061,9 +901,7 @@ function applyTilt(selector, maxDeg=10){
       card.style.transform="perspective(900px) rotateX(0) rotateY(0) translateZ(0)";
       card.style.transition="transform .55s cubic-bezier(.2,.9,.3,1)";
     });
-    card.addEventListener("mouseenter",()=>{
-      card.style.transition="transform .05s";
-    });
+    card.addEventListener("mouseenter",()=>{card.style.transition="transform .05s";});
   });
 }
 applyTilt(".sc", 9);
@@ -1071,13 +909,9 @@ applyTilt(".pc", 7);
 applyTilt(".cc", 5);
 applyTilt(".rl", 7);
 
-/* ════════════════════════════════════════
-   Parallax scrolling on hero
-════════════════════════════════════════ */
 const heroSection=document.getElementById("hero");
 const slowEls=document.querySelectorAll(".para-slow");
 const midEls=document.querySelectorAll(".para-mid");
-
 window.addEventListener("scroll",()=>{
   const sy=window.pageYOffset;
   if(sy < heroSection.offsetHeight * 1.3){
@@ -1086,9 +920,6 @@ window.addEventListener("scroll",()=>{
   }
 },{passive:true});
 
-/* ════════════════════════════════════════
-   SCROLL REVEAL
-════════════════════════════════════════ */
 const obs=new IntersectionObserver(en=>{
   en.forEach(e=>{
     if(e.isIntersecting){
@@ -1104,9 +935,6 @@ document.querySelectorAll(".sb").forEach(b=>{
   },{threshold:.1}).observe(b.closest(".sc"));
 });
 
-/* ════════════════════════════════════════
-   CERTIFICATE LIGHTBOX
-════════════════════════════════════════ */
 function openCert(src){
   document.getElementById("overlay-img").src=src;
   document.getElementById("overlay").classList.add("open");
@@ -1114,9 +942,6 @@ function openCert(src){
 function closeOverlay(){document.getElementById("overlay").classList.remove("open");}
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeOverlay();});
 
-/* ════════════════════════════════════════
-   CHATBOT
-════════════════════════════════════════ */
 function toggleChat(){
   const b=document.getElementById("cbox");
   b.style.display=b.style.display==="flex"?"none":"flex";
@@ -1136,24 +961,27 @@ function addM(sender,text,cls){
   box.appendChild(d);box.scrollTop=box.scrollHeight;return d;
 }
 const R={
-  project:["🚀 11 projects/competitions! Flagship: VendorGo (AI for 50M+ vendors). Plus Fraud Detection Poster (3rd + Cash Prize!), Portfolio Dev (3rd), WebForge, Tech Edge, PU-CODE, Tech-Tonic, GDG, HackTheRank #224, Techedge AI Quiz & Youth Day Pitching!","projects"],
+  project:["🚀 11 projects/competitions! Flagship: VendorGo (AI for 50M+ vendors). Plus Fraud Detection Poster (3rd + Cash Prize!), Portfolio Dev (3rd), WebForge (Rank 3), Tech Edge, PU-CODE, Tech-Tonic, GDG, HackTheRank #224, Techedge AI Quiz & Youth Day Pitching!","projects"],
   vendorgo:["⭐ VendorGo — AI-powered digital platform for India's 50M+ street vendors. WhatsApp automation, AI catalogue generation, zero-barrier onboarding!","projects"],
   skill:["💡 11 skills: HTML/CSS/JS, Python, UI/UX, Git, AI Literacy (90%), Data Analysis, Tally, MS Office 365, SEO & Marketing, Hackathon Experience, Leadership!","skills"],
-  cert:["🏆 14 certificates & achievements: AI Literacy, Tally, MS Office, PU-CODE, Tech-Tonic, NSS, Ignite, HackTheRank #224, GDG, Techedge AI Quiz, WebForge, Portfolio Dev (3rd), Fraud Detection Poster (3rd + Cash Prize!), Tech Edge!","certs"],
-  contact:["📩 Connect on LinkedIn, GitHub, or grab the PDF resume. Scrolling to links!","resume"],
+  cert:["🏆 14 certificates & achievements: AI Literacy, Tally, MS Office, PU-CODE, Tech-Tonic, NSS, Ignite, HackTheRank #224, GDG, Techedge AI Quiz, WebForge (Rank 3), Portfolio Dev (3rd), Fraud Detection Poster (3rd + Cash Prize!), Tech Edge!","certs"],
+  contact:["📩 Email: darjihoney02@gmail.com | LinkedIn & GitHub links below. Scrolling to contact section!","resume"],
+  email:["📩 Reach Honey at darjihoney02@gmail.com — scrolling to links!","resume"],
   about:["👋 Honey Darji — 1st year BCA at CHARUSAT, Anand, Gujarat. AI developer, hackathon competitor (11+ events), VendorGo founder, aspiring Full-Stack AI Developer!",null],
-  hackathon:["⚡ 7+ competitions: PU-CODE, Tech-Tonic, GDG, HackTheRank (#224), Techedge AI Quiz, Youth Day Pitching, WebForge, Tech Edge!","projects"],
-  rank:["🏅 PU-CODE Hackathon 3.0 and Rank #224 at HackTheRank competition! Also 3rd place in Portfolio Dev and Fraud Detection Poster!","projects"],
-  ai:["🤖 AI Literacy = top skill at 90%! Built VendorGo with LLM integration, participated in Techedge Future Clash AI Quiz, holds AI Literacy Certificate. Also upcoming AI/ML Mania by HackuVerse!","skills"],
+  hackathon:["⚡ 7+ competitions: PU-CODE, Tech-Tonic, GDG, HackTheRank (#224), Techedge AI Quiz, Youth Day Pitching, WebForge (Rank 3), Tech Edge!","projects"],
+  rank:["🏅 Rank #224 at HackTheRank, Rank 3 at WebForge, Rank 12 at HTL Knowledge Quest, 3rd place in Portfolio Dev and Fraud Detection Poster!","projects"],
+  ai:["🤖 AI Literacy = top skill at 90%! Built VendorGo with LLM integration, participated in Techedge Future Clash AI Quiz, holds AI Literacy Certificate. Also competed in AI/ML Mania by HackuVerse!","skills"],
   python:["🐍 Python is one of Honey's growing skills at 65% — used for data analysis and AI-related projects!","skills"],
-  future:["🔮 Upcoming competitions: AI/ML Mania (HackuVerse), GeeksforGeeks Competitions, OutThinkX, HTL Knowledge Quest, QuizCore Cybersecurity (Codexa Phantom)!","future"],
-  webforge:["🔥 Completed WebForge — a web development competition for production-grade frontend work!","certs"],
+  competition:["🏆 Competitions in certs section: AI/ML Mania (HackuVerse), GeeksforGeeks Competitions, OutThinkX, HTL Knowledge Quest (Rank 12), QuizCore Cybersecurity (Codexa Phantom), Career Glow-up Night (Nano Banana)!","certs"],
+  webforge:["🔥 Secured Rank 3 in WebForge — a web development competition for production-grade frontend work!","certs"],
   fraud:["🧠 Secured 3rd position AND won a cash prize in the Fraud Detection in Financial Systems poster competition — AI/ML concepts applied!","certs"],
   portfolio:["🏅 Secured 3rd position in Portfolio Development competition — recognized for clean design and professional presentation!","certs"],
   techedge:["⚡ Competed at Tech Edge Competition — a competitive technical event!","certs"],
+  htl:["📚 HTL Knowledge Quest — secured Rank 12 in this interdisciplinary knowledge competition!","certs"],
+  nano:["🚀 Career Glow-up Night by Nano Banana — AI-powered innovation and pitching event!","certs"],
 };
 function botR(msg){
-  let rep="🤖 Try: projects / vendorgo / skills / certificates / contact / about / hackathon / rank / ai / python / future / webforge / fraud / portfolio / techedge";
+  let rep="🤖 Try: projects / vendorgo / skills / certificates / contact / about / hackathon / rank / ai / python / competition / webforge / fraud / portfolio / htl / nano";
   let sec=null;
   for(const[k,v] of Object.entries(R)){
     if(msg.includes(k)){rep=v[0];sec=v[1];break;}
