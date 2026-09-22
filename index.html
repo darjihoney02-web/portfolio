@@ -195,40 +195,120 @@ h1.hname{
 .slabel{font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;color:var(--a1);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:9px;}
 .slabel::before{content:'';width:20px;height:1px;background:var(--a1);box-shadow:0 0 6px var(--a1);}
 h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:800;letter-spacing:-.022em;margin-bottom:46px;line-height:1.08;}
-.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:13px;}
-.sc{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  padding:19px 17px;
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  transform-style:preserve-3d;will-change:transform;
-  position:relative;overflow:hidden;
-  transition:border-color .28s,box-shadow .28s;
+
+/* CIRCULAR SKILLS SECTION STYLES */
+.skills-cat {
+  margin-bottom: 38px;
 }
-.sc::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle at var(--mx,50%) var(--my,20%),rgba(56,189,248,.14) 0%,transparent 54%);
-  opacity:0;transition:opacity .28s;
+.skills-cat-title {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--a1);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.sc:hover{border-color:var(--bh);box-shadow:var(--glow1),0 18px 38px rgba(0,0,0,.38);}
-.sc:hover::before{opacity:1;}
-.si{font-size:1.35rem;margin-bottom:9px;display:block;position:relative;z-index:1;transition:transform .3s;}
-.sc:hover .si{transform:translateZ(18px) scale(1.1);}
-.sn2{font-family:var(--dis);font-size:.88rem;font-weight:700;margin-bottom:12px;color:var(--text);position:relative;z-index:1;transition:transform .3s;}
-.sc:hover .sn2{transform:translateZ(8px);}
-.sbw{height:3px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;position:relative;z-index:1;}
-.sb{height:100%;border-radius:3px;width:0;transition:width 1.5s cubic-bezier(.4,0,.2,1);}
-.sp{font-family:var(--mono);font-size:.6rem;color:var(--muted);text-align:right;margin-top:4px;position:relative;z-index:1;}
-.sc:nth-child(1) .sb{background:linear-gradient(90deg,#38bdf8,#818cf8);}
-.sc:nth-child(2) .sb{background:linear-gradient(90deg,#818cf8,#f472b6);}
-.sc:nth-child(3) .sb{background:linear-gradient(90deg,#34d399,#38bdf8);}
-.sc:nth-child(4) .sb{background:linear-gradient(90deg,#f472b6,#818cf8);}
-.sc:nth-child(5) .sb{background:linear-gradient(90deg,#38bdf8,#34d399);}
-.sc:nth-child(6) .sb{background:linear-gradient(90deg,#fbbf24,#f472b6);}
-.sc:nth-child(7) .sb{background:linear-gradient(90deg,#818cf8,#38bdf8);}
-.sc:nth-child(8) .sb{background:linear-gradient(90deg,#34d399,#fbbf24);}
-.sc:nth-child(9) .sb{background:linear-gradient(90deg,#f472b6,#34d399);}
-.sc:nth-child(10) .sb{background:linear-gradient(90deg,#38bdf8,#f472b6);}
-.sc:nth-child(11) .sb{background:linear-gradient(90deg,#fbbf24,#818cf8);}
+.skills-cat-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+.circ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 16px;
+}
+.circ-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 14px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+}
+.circ-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: var(--bh);
+  box-shadow: var(--glow1), 0 12px 28px rgba(0,0,0,0.35);
+}
+.circ-wrap {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.circ-svg {
+  width: 90px;
+  height: 90px;
+  transform: rotate(-90deg);
+}
+.circ-bg {
+  fill: none;
+  stroke: rgba(56, 189, 248, 0.1);
+  stroke-width: 7;
+}
+.circ-bar {
+  fill: none;
+  stroke: url(#cyan-grad);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 251.2;
+  stroke-dashoffset: 251.2;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.circ-card.show .circ-bar {
+  stroke-dashoffset: calc(251.2 - (251.2 * var(--p, 0)) / 100);
+}
+.circ-val {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.circ-val .sub {
+  font-size: 0.55rem;
+  color: var(--a2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.circ-icon {
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+.circ-name {
+  font-family: var(--dis);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .circ-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
 .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:17px;}
 .pc{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
@@ -515,24 +595,251 @@ footer{
 
 <!-- SKILLS -->
 <section id="skills">
+  <!-- Shared Gradient for SVG Rings -->
+  <svg style="width:0;height:0;position:absolute;">
+    <defs>
+      <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#38bdf8" />
+        <stop offset="100%" stop-color="#818cf8" />
+      </linearGradient>
+    </defs>
+  </svg>
+
   <div class="wrap">
     <div class="slabel rv">02 — Proficiencies</div>
     <h2 class="stitle rv">Skills &amp; Tools</h2>
-    <div class="sgrid">
-      <div class="sc rv"><div class="si">🌐</div><div class="sn2">HTML / CSS / JS</div><div class="sbw"><div class="sb" data-w="85"></div></div><div class="sp">85%</div></div>
-      <div class="sc rv d1"><div class="si">🐍</div><div class="sn2">Python</div><div class="sbw"><div class="sb" data-w="40"></div></div><div class="sp">40%</div></div>
-      <div class="sc rv d2"><div class="si">🎨</div><div class="sn2">UI/UX &amp; Figma</div><div class="sbw"><div class="sb" data-w="60"></div></div><div class="sp">60%</div></div>
-      <div class="sc rv d3"><div class="si">🐙</div><div class="sn2">Git &amp; GitHub</div><div class="sbw"><div class="sb" data-w="80"></div></div><div class="sp">80%</div></div>
-      <div class="sc rv"><div class="si">🤖</div><div class="sn2">AI Literacy</div><div class="sbw"><div class="sb" data-w="80"></div></div><div class="sp">80%</div></div>
-      <div class="sc rv d1"><div class="si">📊</div><div class="sn2">Data Analysis</div><div class="sbw"><div class="sb" data-w="70"></div></div><div class="sp">70%</div></div>
-      <div class="sc rv d2"><div class="si">📒</div><div class="sn2">Tally Prime</div><div class="sbw"><div class="sb" data-w="75"></div></div><div class="sp">75%</div></div>
-      <div class="sc rv d3"><div class="si">💼</div><div class="sn2">Microsoft Office 365</div><div class="sbw"><div class="sb" data-w="83"></div></div><div class="sp">83%</div></div>
-      <div class="sc rv"><div class="si">📈</div><div class="sn2">SEO &amp; Digital Marketing</div><div class="sbw"><div class="sb" data-w="68"></div></div><div class="sp">68%</div></div>
-      <div class="sc rv d1"><div class="si">🏆</div><div class="sn2">Hackathon Experience</div><div class="sbw"><div class="sb" data-w="70"></div></div><div class="sp">70%</div></div>
-      <div class="sc rv d2"><div class="si">🤝</div><div class="sn2">Teamwork &amp; Leadership</div><div class="sbw"><div class="sb" data-w="88"></div></div><div class="sp">88%</div></div>
+
+    <!-- WEB DEVELOPMENT -->
+    <div class="skills-cat rv">
+      <div class="skills-cat-title">Web Development</div>
+      <div class="circ-grid">
+        <div class="circ-card rv" style="--p: 85;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">85%</div>
+          </div>
+          <div class="circ-icon">🌐</div>
+          <div class="circ-name">HTML &amp; CSS</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 45;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">45%</div>
+          </div>
+          <div class="circ-icon">⚡</div>
+          <div class="circ-name">JavaScript</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 25;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val"><span class="sub">Learning</span></div>
+          </div>
+          <div class="circ-icon">⚛️</div>
+          <div class="circ-name">React</div>
+        </div>
+      </div>
     </div>
+
+    <!-- PROGRAMMING -->
+    <div class="skills-cat rv">
+      <div class="skills-cat-title">Programming</div>
+      <div class="circ-grid">
+        <div class="circ-card rv" style="--p: 25;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val"><span class="sub">Learning</span></div>
+          </div>
+          <div class="circ-icon">🐍</div>
+          <div class="circ-name">Python</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 70;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">70%</div>
+          </div>
+          <div class="circ-icon">⚙️</div>
+          <div class="circ-name">C++</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 65;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">65%</div>
+          </div>
+          <div class="circ-icon">🗄️</div>
+          <div class="circ-name">SQL &amp; MySQL</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEVELOPMENT TOOLS -->
+    <div class="skills-cat rv">
+      <div class="skills-cat-title">Development Tools</div>
+      <div class="circ-grid">
+        <div class="circ-card rv" style="--p: 80;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">80%</div>
+          </div>
+          <div class="circ-icon">🐙</div>
+          <div class="circ-name">Git &amp; GitHub</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 85;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">85%</div>
+          </div>
+          <div class="circ-icon">💻</div>
+          <div class="circ-name">VS Code</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 50;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">50%</div>
+          </div>
+          <div class="circ-icon">🐧</div>
+          <div class="circ-name">Linux / Cygwin</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI & DATA -->
+    <div class="skills-cat rv">
+      <div class="skills-cat-title">AI &amp; Data</div>
+      <div class="circ-grid">
+        <div class="circ-card rv" style="--p: 60;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">60%</div>
+          </div>
+          <div class="circ-icon">🤖</div>
+          <div class="circ-name">AI Literacy</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 60;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">60%</div>
+          </div>
+          <div class="circ-icon">📊</div>
+          <div class="circ-name">Data Analysis</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 20;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">20%</div>
+          </div>
+          <div class="circ-icon">🧠</div>
+          <div class="circ-name">Machine Learning Basics</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN & DIGITAL -->
+    <div class="skills-cat rv">
+      <div class="skills-cat-title">Design &amp; Digital</div>
+      <div class="circ-grid">
+        <div class="circ-card rv" style="--p: 60;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">60%</div>
+          </div>
+          <div class="circ-icon">🎨</div>
+          <div class="circ-name">UI/UX &amp; Figma</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 60;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">60%</div>
+          </div>
+          <div class="circ-icon">📈</div>
+          <div class="circ-name">SEO &amp; Digital Marketing</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFESSIONAL -->
+    <div class="skills-cat rv">
+      <div class="skills-cat-title">Professional</div>
+      <div class="circ-grid">
+        <div class="circ-card rv" style="--p: 60;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">60%</div>
+          </div>
+          <div class="circ-icon">🏆</div>
+          <div class="circ-name">Hackathon Experience</div>
+        </div>
+
+        <div class="circ-card rv" style="--p: 80;">
+          <div class="circ-wrap">
+            <svg class="circ-svg" viewBox="0 0 90 90">
+              <circle class="circ-bg" cx="45" cy="45" r="40" />
+              <circle class="circ-bar" cx="45" cy="45" r="40" />
+            </svg>
+            <div class="circ-val">80%</div>
+          </div>
+          <div class="circ-icon">🤝</div>
+          <div class="circ-name">Teamwork &amp; Leadership</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
+
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
@@ -739,13 +1046,13 @@ window.addEventListener('mousemove', (e) => {
 });
 
 // Interactive hover effects on interactive elements
-document.querySelectorAll('a, button, .sc, .pc, .cc, .rl').forEach(el => {
+document.querySelectorAll('a, button, .sc, .pc, .cc, .rl, .circ-card').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('ch'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('ch'));
 });
 
 // 3D Tilt & Light Effect for cards
-document.querySelectorAll('.sc, .pc, .cc').forEach(card => {
+document.querySelectorAll('.pc, .cc, .circ-card').forEach(card => {
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -798,11 +1105,6 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('show');
-      // Trigger skill bars
-      const sb = entry.target.querySelector('.sb');
-      if (sb) {
-        sb.style.width = sb.getAttribute('data-w') + '%';
-      }
     }
   });
 }, { threshold: 0.15 });
