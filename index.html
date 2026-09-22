@@ -1,1223 +1,260 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Honey Darji — AI Developer & BCA Student</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#03050f;
-  --surface:rgba(8,14,40,.75);
-  --surface2:rgba(14,22,58,.85);
-  --border:rgba(56,189,248,.15);
-  --bh:rgba(56,189,248,.48);
-  --a1:#38bdf8;--a2:#818cf8;--a3:#34d399;--a4:#f472b6;--a5:#fbbf24;
-  --text:#e2eeff;--text2:#92b8d8;--muted:#3d5c7c;
-  --glow1:0 0 40px rgba(56,189,248,.22);
-  --glow2:0 0 40px rgba(129,140,248,.2);
-  --r:18px;
-  --mono:'Space Mono',monospace;
-  --dis:'Syne',sans-serif;
-  --body:'DM Sans',sans-serif;
-  --ease:.38s cubic-bezier(.4,0,.2,1);
-}
-[data-theme="light"]{
-  --bg:#eef5ff;--surface:rgba(255,255,255,.82);--surface2:rgba(232,243,255,.9);
-  --border:rgba(30,110,180,.18);--bh:rgba(14,100,175,.5);
-  --text:#08182e;--text2:#1e3d5e;--muted:#5a84aa;
-  --glow1:0 0 36px rgba(30,110,180,.14);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:var(--body);background:var(--bg);color:var(--text);
-  min-height:100vh;overflow-x:hidden;cursor:none;
-  transition:background var(--ease),color var(--ease);
-}
-#cur{
-  width:9px;height:9px;background:var(--a1);border-radius:50%;
-  position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:screen;
-  transform:translate(-50%,-50%);
-  transition:transform .1s,background .2s;
-  filter:drop-shadow(0 0 6px var(--a1));
-}
-#cur-r{
-  width:32px;height:32px;border:1.5px solid rgba(56,189,248,.4);border-radius:50%;
-  position:fixed;pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);transition:opacity .3s;
-}
-#cur-g{
-  width:64px;height:64px;
-  background:radial-gradient(circle,rgba(56,189,248,.07) 0%,transparent 70%);
-  border-radius:50%;position:fixed;pointer-events:none;z-index:9997;
-  transform:translate(-50%,-50%);transition:opacity .4s;
-}
-body.ch #cur{transform:translate(-50%,-50%) scale(3.2);background:var(--a2);filter:drop-shadow(0 0 10px var(--a2));}
-body.ch #cur-r,body.ch #cur-g{opacity:0;}
-#bg{position:fixed;inset:0;z-index:-2;opacity:.48;}
-.grain{
-  position:fixed;inset:0;z-index:-1;opacity:.028;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  pointer-events:none;
-}
-.orb{
-  position:fixed;border-radius:50%;pointer-events:none;z-index:-1;
-  filter:blur(80px);opacity:.06;
-  animation:orbFloat 18s ease infinite alternate;
-}
-.orb1{width:500px;height:500px;background:var(--a1);top:-10%;left:-10%;animation-delay:0s;}
-.orb2{width:420px;height:420px;background:var(--a2);bottom:-10%;right:-5%;animation-delay:-6s;}
-.orb3{width:300px;height:300px;background:var(--a4);top:50%;left:55%;animation-delay:-12s;}
-@keyframes orbFloat{
-  0%{transform:translate(0,0) scale(1);}
-  50%{transform:translate(35px,-25px) scale(1.07);}
-  100%{transform:translate(-18px,42px) scale(.96);}
-}
-[data-theme="light"] .orb{opacity:.03;}
-nav{
-  position:fixed;top:0;left:0;width:100%;z-index:300;
-  padding:13px 44px;
-  display:flex;justify-content:space-between;align-items:center;
-  background:rgba(3,5,15,.45);
-  backdrop-filter:blur(28px) saturate(180%);
-  -webkit-backdrop-filter:blur(28px) saturate(180%);
-  border-bottom:1px solid rgba(56,189,248,.1);
-  box-shadow:0 1px 0 rgba(56,189,248,.07),0 4px 30px rgba(0,0,0,.28);
-  transition:background var(--ease);
-}
-[data-theme="light"] nav{background:rgba(238,245,255,.58);backdrop-filter:blur(28px) saturate(180%);}
-.logo{
-  font-family:var(--mono);font-size:.8rem;color:var(--a1);letter-spacing:.15em;
-  text-shadow:0 0 18px rgba(56,189,248,.38);
-}
-.nav-r{display:flex;gap:26px;align-items:center;}
-.nav-r a{
-  font-family:var(--mono);font-size:.68rem;color:var(--muted);
-  text-decoration:none;letter-spacing:.1em;text-transform:uppercase;
-  transition:color .22s,text-shadow .22s;position:relative;
-}
-.nav-r a::after{
-  content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;
-  background:var(--a1);
-  box-shadow:0 0 6px var(--a1);
-  transition:width .28s;
-}
-.nav-r a:hover{color:var(--a1);text-shadow:0 0 10px rgba(56,189,248,.4);}
-.nav-r a:hover::after{width:100%;}
-.tbtn{
-  background:none;border:1px solid var(--border);border-radius:50px;
-  padding:5px 14px;font-family:var(--mono);font-size:.65rem;
-  color:var(--a1);cursor:none;letter-spacing:.06em;
-  transition:border-color .22s,background .22s,box-shadow .22s;
-}
-.tbtn:hover{background:rgba(56,189,248,.1);border-color:var(--a1);box-shadow:0 0 14px rgba(56,189,248,.22);}
-section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:108px 22px 65px;position:relative;}
-.wrap{max-width:1060px;width:100%;}
-#hero{overflow:hidden;}
-.scanline{
-  position:absolute;top:-2px;left:0;width:100%;height:2px;
-  background:linear-gradient(90deg,transparent,rgba(56,189,248,.13),transparent);
-  animation:scanMove 7s linear infinite;pointer-events:none;z-index:1;
-}
-@keyframes scanMove{0%{top:-2px;}100%{top:100%;}}
-.hero-chip{
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;
-  color:var(--a1);text-transform:uppercase;margin-bottom:28px;
-  display:flex;align-items:center;gap:10px;
-}
-.hero-chip::before{content:'';width:34px;height:1px;background:var(--a1);box-shadow:0 0 8px var(--a1);}
-.live-dot{
-  width:6px;height:6px;border-radius:50%;background:var(--a3);
-  animation:ldot 1.6s infinite;
-  box-shadow:0 0 6px var(--a3);
-}
-@keyframes ldot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.65);}}
-h1.hname{
-  font-family:var(--dis);font-size:clamp(3.4rem,9vw,8rem);
-  font-weight:800;line-height:.9;letter-spacing:-.025em;margin-bottom:24px;
-  transform-style:preserve-3d;
-}
-.np{display:block;color:var(--text);}
-.ng{
-  display:block;
-  background:linear-gradient(110deg,#38bdf8 0%,#818cf8 36%,#f472b6 62%,#34d399 88%);
-  background-size:260%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:gs 5s ease infinite;
-  filter:drop-shadow(0 0 28px rgba(56,189,248,.3));
-}
-@keyframes gs{0%{background-position:0%;}50%{background-position:100%;}100%{background-position:0%;}}
-.cblink{
-  display:inline-block;width:5px;height:.82em;background:var(--a1);
-  margin-left:4px;vertical-align:middle;animation:blink 1.1s step-end infinite;
-  box-shadow:0 0 8px var(--a1);
-}
-@keyframes blink{50%{opacity:0;}}
-.role-wrap{font-family:var(--mono);font-size:1rem;color:var(--a2);letter-spacing:.04em;margin-bottom:10px;min-height:1.5em;}
-#role-text{border-right:2px solid var(--a2);padding-right:3px;animation:caretBlink 1s step-end infinite;}
-@keyframes caretBlink{50%{border-color:transparent;}}
-.hero-sub{font-family:var(--mono);font-size:.84rem;color:var(--muted);letter-spacing:.06em;margin-bottom:14px;}
-.hero-tag{font-size:1.12rem;color:var(--text2);margin-bottom:40px;max-width:500px;line-height:1.66;}
-.hbtns{display:flex;gap:13px;flex-wrap:wrap;}
-.btn1{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
-  color:#03050f;background:var(--a1);
-  padding:13px 30px;border-radius:50px;text-decoration:none;font-weight:700;
-  box-shadow:0 0 30px rgba(56,189,248,.48),0 4px 14px rgba(56,189,248,.28),inset 0 1px 0 rgba(255,255,255,.28);
-  transition:transform .24s,box-shadow .24s;
-  position:relative;overflow:hidden;
-}
-.btn1::before{
-  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);
-  transition:left .5s;pointer-events:none;
-}
-.btn1:hover::before{left:100%;}
-.btn1:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 0 50px rgba(56,189,248,.72),0 8px 24px rgba(56,189,248,.38);}
-.btn1:active{transform:translateY(-1px);}
-.btn2{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--a1);padding:13px 30px;border-radius:50px;text-decoration:none;
-  border:1px solid var(--bh);
-  background:rgba(56,189,248,.04);backdrop-filter:blur(10px);
-  transition:transform .24s,background .24s,box-shadow .24s;
-}
-.btn2:hover{transform:translateY(-4px) scale(1.02);background:rgba(56,189,248,.1);box-shadow:var(--glow1),inset 0 0 20px rgba(56,189,248,.04);}
-.stats{display:flex;gap:42px;margin-top:50px;border-top:1px solid var(--border);padding-top:32px;flex-wrap:wrap;}
-.sn{
-  font-family:var(--dis);font-size:2.4rem;font-weight:800;color:var(--a1);
-  text-shadow:0 0 18px rgba(56,189,248,.36);
-}
-.sl{font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
-.slabel{font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;color:var(--a1);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:9px;}
-.slabel::before{content:'';width:20px;height:1px;background:var(--a1);box-shadow:0 0 6px var(--a1);}
-h2.stitle{font-family:var(--dis);font-size:clamp(1.9rem,5vw,3.1rem);font-weight:800;letter-spacing:-.022em;margin-bottom:46px;line-height:1.08;}
+I want you to improve ONLY the existing “Skills & Tools” section of my portfolio.
 
-/* CIRCULAR SKILLS SECTION STYLES */
-.skills-cat {
-  margin-bottom: 38px;
-}
-.skills-cat-title {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--a1);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.skills-cat-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--border), transparent);
-}
-.circ-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-  gap: 16px;
-}
-.circ-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 20px 14px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
-  position: relative;
-  overflow: hidden;
-}
-.circ-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  border-color: var(--bh);
-  box-shadow: var(--glow1), 0 12px 28px rgba(0,0,0,0.35);
-}
-.circ-wrap {
-  position: relative;
-  width: 90px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-.circ-svg {
-  width: 90px;
-  height: 90px;
-  transform: rotate(-90deg);
-}
-.circ-bg {
-  fill: none;
-  stroke: rgba(56, 189, 248, 0.1);
-  stroke-width: 7;
-}
-.circ-bar {
-  fill: none;
-  stroke: url(#cyan-grad);
-  stroke-width: 7;
-  stroke-linecap: round;
-  stroke-dasharray: 251.2;
-  stroke-dashoffset: 251.2;
-  transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.circ-card.show .circ-bar {
-  stroke-dashoffset: calc(251.2 - (251.2 * var(--p, 0)) / 100);
-}
-.circ-val {
-  position: absolute;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.circ-val .sub {
-  font-size: 0.55rem;
-  color: var(--a2);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.circ-icon {
-  font-size: 1.1rem;
-  margin-bottom: 2px;
-}
-.circ-name {
-  font-family: var(--dis);
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-}
+IMPORTANT: I am NOT asking you to copy the reference design I provided. The reference image is ONLY an example showing how empty space can be used creatively.
 
-@media (max-width: 600px) {
-  .circ-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-}
+Use the reference only as inspiration for:
+- better use of whitespace
+- balanced composition
+- combining multiple visual elements in one section
+- making the Skills section feel more premium and engaging
 
-.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:17px;}
-.pc{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  padding:26px 24px;
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  transform-style:preserve-3d;will-change:transform;
-  position:relative;overflow:hidden;
-  transition:border-color .28s,box-shadow .28s;
-}
-.pc::before{
-  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(circle at var(--mx,50%) var(--my,20%),rgba(56,189,248,.11) 0%,transparent 54%);
-  opacity:0;transition:opacity .3s;
-}
-.pc:hover{border-color:var(--bh);box-shadow:0 22px 58px rgba(56,189,248,.17),0 0 0 1px rgba(56,189,248,.07);}
-.pc:hover::before{opacity:1;}
-.pbadge{
-  display:inline-flex;align-items:center;gap:5px;
-  font-family:var(--mono);font-size:.6rem;
-  letter-spacing:.12em;text-transform:uppercase;padding:3px 11px;
-  border-radius:50px;margin-bottom:15px;
-  position:relative;z-index:1;transition:transform .3s;
-}
-.pc:hover .pbadge{transform:translateZ(14px);}
-.bai{background:rgba(56,189,248,.13);color:var(--a1);box-shadow:0 0 10px rgba(56,189,248,.12);}
-.bhk{background:rgba(129,140,248,.13);color:var(--a2);box-shadow:0 0 10px rgba(129,140,248,.12);}
-.brk{background:rgba(52,211,153,.13);color:var(--a3);box-shadow:0 0 10px rgba(52,211,153,.12);}
-.bqz{background:rgba(244,114,182,.13);color:var(--a4);box-shadow:0 0 10px rgba(244,114,182,.12);}
-.bpt{background:rgba(251,191,36,.13);color:var(--a5);box-shadow:0 0 10px rgba(251,191,36,.12);}
-.pc h3{font-family:var(--dis);font-size:1.14rem;font-weight:700;margin-bottom:9px;color:var(--text);position:relative;z-index:1;transition:transform .3s;}
-.pc:hover h3{transform:translateZ(8px);}
-.pc p{color:var(--text2);font-size:.85rem;line-height:1.65;margin-bottom:18px;position:relative;z-index:1;}
-.plink{
-  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--a1);text-decoration:none;display:inline-flex;align-items:center;gap:6px;
-  position:relative;z-index:1;transition:gap .22s,text-shadow .22s;
-}
-.plink:hover{gap:12px;text-shadow:0 0 10px rgba(56,189,248,.45);}
-.pglow{
-  position:absolute;top:-50px;right:-50px;width:140px;height:140px;border-radius:50%;
-  background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);pointer-events:none;
-  animation:glowPulse 3s ease infinite;
-}
-@keyframes glowPulse{0%,100%{opacity:.55;transform:scale(1);}50%{opacity:1;transform:scale(1.14);}}
-.pc.feat{
-  grid-column:1/-1;display:grid;grid-template-columns:3fr 2fr;gap:26px;align-items:center;
-  background:linear-gradient(135deg,rgba(8,14,40,.9),rgba(14,22,58,.94));
-  border-color:rgba(56,189,248,.28);
-  box-shadow:0 0 0 1px rgba(56,189,248,.1),0 18px 55px rgba(56,189,248,.11);
-}
-.pc.feat:hover{box-shadow:0 0 0 1px rgba(56,189,248,.22),0 28px 75px rgba(56,189,248,.2);}
-@media(max-width:600px){.pc.feat{grid-template-columns:1fr;}}
-.tpanel{
-  background:rgba(56,189,248,.05);border:1px solid rgba(56,189,248,.13);
-  border-radius:13px;padding:18px;font-family:var(--mono);font-size:.74rem;
-  color:var(--muted);line-height:2.1;
-  backdrop-filter:blur(8px);position:relative;z-index:1;
-}
-.tpanel .tc{color:var(--a3);margin-bottom:7px;font-size:.68rem;}
-.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
-.cc{
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  text-decoration:none;color:var(--text);display:block;overflow:hidden;
-  backdrop-filter:blur(12px);
-  transform-style:preserve-3d;will-change:transform;
-  position:relative;cursor:pointer;
-  transition:border-color .28s,box-shadow .28s;
-}
-.cc:hover{
-  border-color:rgba(52,211,153,.5);
-  box-shadow:0 0 0 1px rgba(52,211,153,.13),0 18px 40px rgba(52,211,153,.17);
-}
-.cc::after{
-  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
-  transform:skewX(-20deg);transition:left .6s;pointer-events:none;z-index:2;
-}
-.cc:hover::after{left:150%;}
-.cimg-wrap{width:100%;height:130px;overflow:hidden;background:rgba(56,189,248,.06);display:flex;align-items:center;justify-content:center;position:relative;}
-.cimg-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.4,0,.2,1);display:block;}
-.cc:hover .cimg-wrap img{transform:scale(1.1);}
-.cimg-wrap .fallback{font-size:2.4rem;position:absolute;opacity:1;transition:opacity .3s;filter:drop-shadow(0 0 8px rgba(56,189,248,.32));}
-.cimg-wrap img.loaded ~ .fallback{opacity:0;}
-.cimg-wrap img.error{display:none;}
-.cinfo{padding:14px 16px;}
-.cname{font-family:var(--dis);font-size:.88rem;font-weight:700;margin-bottom:4px;color:var(--text);}
-.cdesc{color:var(--muted);font-size:.75rem;line-height:1.5;}
-.cbadge{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;padding:2px 9px;border-radius:50px;background:rgba(52,211,153,.12);color:var(--a3);box-shadow:0 0 7px rgba(52,211,153,.1);}
-.overlay{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.82);
-  backdrop-filter:blur(22px) saturate(180%);
-  -webkit-backdrop-filter:blur(22px) saturate(180%);
-  z-index:2000;display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity .32s;
-}
-.overlay.open{opacity:1;pointer-events:all;}
-.overlay img{
-  max-width:90vw;max-height:88vh;border-radius:14px;
-  box-shadow:0 0 80px rgba(56,189,248,.28),0 0 0 1px rgba(56,189,248,.12);
-  transform:scale(.88);transition:transform .36s cubic-bezier(.2,.9,.3,1);
-}
-.overlay.open img{transform:scale(1);}
-.overlay-close{
-  position:absolute;top:22px;right:28px;font-size:2rem;
-  color:#fff;cursor:pointer;background:none;border:none;opacity:.7;
-  transition:opacity .2s,transform .2s;
-}
-.overlay-close:hover{opacity:1;transform:rotate(90deg);}
-.tl{position:relative;padding-left:28px;}
-.tl::before{
-  content:'';position:absolute;left:5px;top:8px;bottom:8px;width:1px;
-  background:linear-gradient(to bottom,var(--a1),var(--a2),var(--a4),transparent);
-  box-shadow:0 0 8px rgba(56,189,248,.22);
-}
-.tli{position:relative;margin-bottom:38px;opacity:0;transform:translateX(-16px);transition:opacity .6s,transform .6s;}
-.tli.show{opacity:1;transform:translateX(0);}
-.tld{
-  position:absolute;left:-32px;top:4px;width:13px;height:13px;border-radius:50%;
-  border:2px solid var(--a1);background:var(--bg);
-  animation:dotPulse 2.5s ease infinite;
-}
-@keyframes dotPulse{
-  0%,100%{box-shadow:0 0 7px rgba(56,189,248,.45);}
-  50%{box-shadow:0 0 16px rgba(56,189,248,.88),0 0 28px rgba(56,189,248,.26);}
-}
-.tly{font-family:var(--mono);font-size:.66rem;color:var(--a1);letter-spacing:.12em;margin-bottom:4px;}
-.tlt{font-family:var(--dis);font-size:1.18rem;font-weight:700;margin-bottom:6px;color:var(--text);}
-.tldesc{color:var(--text2);font-size:.85rem;line-height:1.6;}
-.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:34px;}
-.rl{
-  display:flex;align-items:center;gap:12px;
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  padding:19px 21px;text-decoration:none;color:var(--text);
-  font-family:var(--dis);font-weight:700;
-  backdrop-filter:blur(12px);
-  position:relative;overflow:hidden;
-  transition:transform .26s,border-color .26s,box-shadow .26s;
-}
-.rl::before{
-  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);
-  transition:left .5s;pointer-events:none;
-}
-.rl:hover::before{left:100%;}
-.rl:hover{transform:translateY(-5px) scale(1.01);border-color:var(--bh);box-shadow:var(--glow1),0 8px 22px rgba(0,0,0,.28);}
-.ri{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:transform .26s;}
-.rl:hover .ri{transform:scale(1.14) rotate(-5deg);}
-.rir{background:rgba(248,113,113,.13);}
-.rib{background:rgba(56,189,248,.13);}
-.rip{background:rgba(129,140,248,.13);}
-.rig{background:rgba(52,211,153,.13);}
-.rsub{font-size:.7rem;color:var(--muted);font-family:var(--mono);margin-top:2px;}
-.cfab{
-  position:fixed;bottom:24px;right:24px;
-  width:54px;height:54px;border-radius:50%;
-  background:linear-gradient(135deg,var(--a1),var(--a2));
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;cursor:none;border:none;outline:none;
-  z-index:500;transition:transform .22s;animation:fabg 3s ease infinite;
-}
-@keyframes fabg{
-  0%,100%{box-shadow:0 0 22px rgba(56,189,248,.55),0 0 48px rgba(129,140,248,.28);}
-  50%{box-shadow:0 0 34px rgba(56,189,248,.82),0 0 68px rgba(129,140,248,.45);}
-}
-.cfab:hover{transform:scale(1.13) rotate(12deg);}
-.cbox{
-  position:fixed;bottom:92px;right:24px;width:316px;border-radius:20px;
-  flex-direction:column;overflow:hidden;
-  background:rgba(5,9,28,.68);
-  backdrop-filter:blur(34px) saturate(200%);
-  -webkit-backdrop-filter:blur(34px) saturate(200%);
-  border:1px solid rgba(56,189,248,.16);
-  box-shadow:0 14px 55px rgba(0,0,0,.7),var(--glow1),inset 0 1px 0 rgba(255,255,255,.04);
-  display:none;z-index:499;
-  animation:chatSlide .3s cubic-bezier(.2,.9,.3,1);
-}
-@keyframes chatSlide{from{opacity:0;transform:translateY(12px) scale(.97);}to{opacity:1;transform:none;}}
-[data-theme="light"] .cbox{background:rgba(238,245,255,.78);}
-.chdr{padding:12px 15px;border-bottom:1px solid rgba(56,189,248,.12);font-family:var(--mono);font-size:.73rem;color:var(--a1);letter-spacing:.08em;display:flex;align-items:center;gap:7px;}
-.cdot2{width:6px;height:6px;border-radius:50%;background:var(--a3);animation:ldot 1.5s infinite;box-shadow:0 0 6px var(--a3);}
-#cmsgs{height:195px;overflow-y:auto;padding:11px;font-size:.8rem;line-height:1.6;}
-#cmsgs::-webkit-scrollbar{width:3px;}
-#cmsgs::-webkit-scrollbar-thumb{background:rgba(56,189,248,.2);border-radius:3px;}
-.qbs{display:flex;flex-wrap:wrap;gap:5px;padding:7px 11px;}
-.qb{
-  font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;
-  background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);
-  color:var(--a1);padding:4px 10px;border-radius:50px;cursor:none;
-  transition:background .18s,transform .18s,box-shadow .18s;
-}
-.qb:hover{background:rgba(56,189,248,.22);transform:translateY(-2px);box-shadow:0 4px 12px rgba(56,189,248,.18);}
-.cinw{display:flex;border-top:1px solid rgba(56,189,248,.1);}
-#cinp{flex:1;padding:9px 12px;background:transparent;border:none;outline:none;color:var(--text);font-family:var(--mono);font-size:.76rem;}
-.csend{padding:0 13px;background:transparent;border:none;color:var(--a1);cursor:none;font-size:.95rem;transition:transform .2s;}
-.csend:hover{transform:translateY(-2px);}
-.cm{margin-bottom:8px;}
-.cm .cl{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;margin-bottom:1px;}
-.cm.user .cl{color:var(--a2);}
-.cm.bot .cl{color:var(--a3);}
-.rv{opacity:0;transform:translateY(26px);transition:opacity .72s cubic-bezier(.4,0,.2,1),transform .72s cubic-bezier(.4,0,.2,1);}
-.rv.show{opacity:1;transform:translateY(0);}
-.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
-.para-slow,.para-mid{will-change:transform;}
-footer{
-  text-align:center;padding:34px 20px;
-  font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.1em;
-  border-top:1px solid var(--border);
-  box-shadow:0 -1px 0 rgba(56,189,248,.06);
-}
-@media(max-width:720px){
-  nav{padding:11px 16px;}
-  .nav-r{gap:12px;}
-  .nav-r a{font-size:.58rem;}
-  h1.hname{font-size:clamp(2.7rem,12vw,4.5rem);}
-  .stats{gap:22px;}
-  .sn{font-size:2rem;}
-  .sc,.pc,.cc,.rl{will-change:auto;transform:none!important;}
-  .orb{display:none;}
-  #cur-g{display:none;}
-}
-@media(max-width:440px){
-  .nav-r a:not(.tbtn){display:none;}
-  .hbtns{flex-direction:column;}
-}
-</style>
-</head>
-<body>
+DO NOT copy:
+- its exact layout
+- its orbit/radar design
+- its colors
+- its typography
+- its progress bars
+- its card structure
+- its visual arrangement
+- its wording
+- its overall design
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
-<div id="cur"></div>
-<div id="cur-r"></div>
-<div id="cur-g"></div>
-<div class="grain"></div>
-<canvas id="bg"></canvas>
+I want an ORIGINAL design that matches MY EXISTING portfolio.
 
-<div class="overlay" id="overlay" onclick="closeOverlay()">
-  <button class="overlay-close" onclick="closeOverlay()">✕</button>
-  <img id="overlay-img" src="" alt="Certificate">
-</div>
+==================================================
+CURRENT DESIGN
+==================================================
 
-<!-- NAV -->
-<nav>
-  <div class="logo">HD_portfolio.v4</div>
-  <div class="nav-r">
-    <a href="#hero">Home</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#timeline">Journey</a>
-    <a href="#resume">Resume</a>
-    <a href="#certs">Certs</a>
-    <button class="tbtn" id="tbtn" onclick="toggleTheme()">☀ Light</button>
-  </div>
-</nav>
+My current Skills & Tools section already uses circular skill/proficiency cards with percentage rings.
 
-<!-- HERO -->
-<section id="hero">
-  <div class="scanline"></div>
-  <div class="wrap">
-    <div class="hero-chip rv para-slow"><span class="live-dot"></span>01 — Open to opportunities</div>
-    <h1 class="hname rv d1 para-mid">
-      <span class="np">Honey</span>
-      <span class="ng">Darji<span class="cblink"></span></span>
-    </h1>
-    <div class="role-wrap rv d2"><span id="role-text"></span></div>
-    <p class="hero-sub rv d2">BCA Student @ CHARUSAT · 9.09 SGPA · AI Developer · Builder</p>
-    <p class="hero-tag rv d3">I build scalable, smart, and real-world solutions — at the intersection of design, AI, and technology.</p>
-    <div class="hbtns rv d3">
-      <a href="#projects" class="btn1">
-        View Projects
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
-      <a href="#resume" class="btn2">Contact Me →</a>
-    </div>
-    <div class="stats rv d4">
-      <div><div class="sn">5+</div><div class="sl">Competitions</div></div>
-      <div><div class="sn">10+</div><div class="sl">Certificates</div></div>
-      <div><div class="sn">#224</div><div class="sl">HackTheRank</div></div>
-    </div>
-  </div>
-</section>
+KEEP THAT CONCEPT.
 
-<!-- SKILLS -->
-<section id="skills">
-  <!-- Shared Gradient for SVG Rings -->
-  <svg style="width:0;height:0;position:absolute;">
-    <defs>
-      <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#38bdf8" />
-        <stop offset="100%" stop-color="#818cf8" />
-      </linearGradient>
-    </defs>
-  </svg>
+The circular skill rings are good and should NOT be removed completely.
 
-  <div class="wrap">
-    <div class="slabel rv">02 — Proficiencies</div>
-    <h2 class="stitle rv">Skills &amp; Tools</h2>
+However, the current design creates too much empty space in some categories, especially where there are only 2–3 skills.
 
-    <!-- WEB DEVELOPMENT -->
-    <div class="skills-cat rv">
-      <div class="skills-cat-title">Web Development</div>
-      <div class="circ-grid">
-        <div class="circ-card rv" style="--p: 85;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">85%</div>
-          </div>
-          <div class="circ-icon">🌐</div>
-          <div class="circ-name">HTML &amp; CSS</div>
-        </div>
+Instead of filling the entire section with repetitive circular cards, redesign the composition so that the circular skill visualization works together with another creative technical/futuristic visual element.
 
-        <div class="circ-card rv" style="--p: 45;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">45%</div>
-          </div>
-          <div class="circ-icon">⚡</div>
-          <div class="circ-name">JavaScript</div>
-        </div>
+==================================================
+DESIRED DIRECTION
+==================================================
 
-        <div class="circ-card rv" style="--p: 25;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val"><span class="sub">Learning</span></div>
-          </div>
-          <div class="circ-icon">⚛️</div>
-          <div class="circ-name">React</div>
-        </div>
-      </div>
-    </div>
+Create a balanced, premium two-part Skills & Tools section.
 
-    <!-- PROGRAMMING -->
-    <div class="skills-cat rv">
-      <div class="skills-cat-title">Programming</div>
-      <div class="circ-grid">
-        <div class="circ-card rv" style="--p: 25;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val"><span class="sub">Learning</span></div>
-          </div>
-          <div class="circ-icon">🐍</div>
-          <div class="circ-name">Python</div>
-        </div>
+The exact design is up to you, but it should follow this principle:
 
-        <div class="circ-card rv" style="--p: 70;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">70%</div>
-          </div>
-          <div class="circ-icon">⚙️</div>
-          <div class="circ-name">C++</div>
-        </div>
+ONE PART:
+Keep the circular skill/proficiency visualization.
 
-        <div class="circ-card rv" style="--p: 65;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">65%</div>
-          </div>
-          <div class="circ-icon">🗄️</div>
-          <div class="circ-name">SQL &amp; MySQL</div>
-        </div>
-      </div>
-    </div>
+OTHER PART:
+Use the unused space for an ORIGINAL technical/futuristic visualization related to my skills.
 
-    <!-- DEVELOPMENT TOOLS -->
-    <div class="skills-cat rv">
-      <div class="skills-cat-title">Development Tools</div>
-      <div class="circ-grid">
-        <div class="circ-card rv" style="--p: 80;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">80%</div>
-          </div>
-          <div class="circ-icon">🐙</div>
-          <div class="circ-name">Git &amp; GitHub</div>
-        </div>
+Possible concepts include:
+- Tech Stack constellation
+- Developer ecosystem
+- Interactive technology network
+- Skill radar
+- Connected technology nodes
+- Developer DNA visualization
+- Interactive skill categories
+- AI-style technology map
 
-        <div class="circ-card rv" style="--p: 85;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">85%</div>
-          </div>
-          <div class="circ-icon">💻</div>
-          <div class="circ-name">VS Code</div>
-        </div>
+These are ONLY conceptual suggestions.
 
-        <div class="circ-card rv" style="--p: 50;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">50%</div>
-          </div>
-          <div class="circ-icon">🐧</div>
-          <div class="circ-name">Linux / Cygwin</div>
-        </div>
-      </div>
-    </div>
+Do NOT blindly implement one of these.
+Choose whichever concept fits my existing portfolio best.
 
-    <!-- AI & DATA -->
-    <div class="skills-cat rv">
-      <div class="skills-cat-title">AI &amp; Data</div>
-      <div class="circ-grid">
-        <div class="circ-card rv" style="--p: 60;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">60%</div>
-          </div>
-          <div class="circ-icon">🤖</div>
-          <div class="circ-name">AI Literacy</div>
-        </div>
+The second visual should communicate relationships between my skills/tools rather than simply repeating the same circular percentage cards.
 
-        <div class="circ-card rv" style="--p: 60;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">60%</div>
-          </div>
-          <div class="circ-icon">📊</div>
-          <div class="circ-name">Data Analysis</div>
-        </div>
+==================================================
+DESIGN REQUIREMENTS
+==================================================
 
-        <div class="circ-card rv" style="--p: 20;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">20%</div>
-          </div>
-          <div class="circ-icon">🧠</div>
-          <div class="circ-name">Machine Learning Basics</div>
-        </div>
-      </div>
-    </div>
+The new section must:
 
-    <!-- DESIGN & DIGITAL -->
-    <div class="skills-cat rv">
-      <div class="skills-cat-title">Design &amp; Digital</div>
-      <div class="circ-grid">
-        <div class="circ-card rv" style="--p: 60;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">60%</div>
-          </div>
-          <div class="circ-icon">🎨</div>
-          <div class="circ-name">UI/UX &amp; Figma</div>
-        </div>
+- Match my existing blue/cyan AI-futuristic theme
+- Feel like a natural part of my current portfolio
+- Look professional and premium
+- Be visually interesting without becoming cluttered
+- Make good use of previously empty space
+- Maintain the existing typography
+- Maintain the existing background effects
+- Maintain the existing visual language
+- Use subtle glow effects
+- Use smooth animations
+- Have clean spacing
+- Have strong visual hierarchy
+- Work properly on desktop, tablet, and mobile
 
-        <div class="circ-card rv" style="--p: 60;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">60%</div>
-          </div>
-          <div class="circ-icon">📈</div>
-          <div class="circ-name">SEO &amp; Digital Marketing</div>
-        </div>
-      </div>
-    </div>
+Do NOT introduce random colors.
 
-    <!-- PROFESSIONAL -->
-    <div class="skills-cat rv">
-      <div class="skills-cat-title">Professional</div>
-      <div class="circ-grid">
-        <div class="circ-card rv" style="--p: 60;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">60%</div>
-          </div>
-          <div class="circ-icon">🏆</div>
-          <div class="circ-name">Hackathon Experience</div>
-        </div>
+Do NOT make it look like a completely different website.
 
-        <div class="circ-card rv" style="--p: 80;">
-          <div class="circ-wrap">
-            <svg class="circ-svg" viewBox="0 0 90 90">
-              <circle class="circ-bg" cx="45" cy="45" r="40" />
-              <circle class="circ-bar" cx="45" cy="45" r="40" />
-            </svg>
-            <div class="circ-val">80%</div>
-          </div>
-          <div class="circ-icon">🤝</div>
-          <div class="circ-name">Teamwork &amp; Leadership</div>
-        </div>
-      </div>
-    </div>
+==================================================
+SKILL INFORMATION
+==================================================
 
-  </div>
-</section>
+Keep my current skills and percentages unless absolutely necessary for the new layout.
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <div class="slabel rv">03 — Work</div>
-    <h2 class="stitle rv">Projects &amp; Hackathons</h2>
-    <div class="pgrid">
-      <div class="pc feat rv">
-        <div>
-          <div class="pbadge bai">⭐ Featured Project</div>
-          <h3>VendorGo — AI Platform</h3>
-          <p>Production-ready AI-powered digital presence platform for India's 50M+ street vendors. WhatsApp automation, AI catalogue generation, zero-tech-barrier onboarding — go digital in under 5 minutes.</p>
-          <a href="vendorGo-about.html" target="_blank" class="plink">Explore VendorGo →</a>
-        </div>
-        <div class="tpanel">
-          <div class="tc">// tech stack</div>
-          <div>→ WhatsApp Business API</div>
-          <div>→ AI / LLM Integration</div>
-          <div>→ HTML / CSS / JS Frontend</div>
-          <div>→ No-Code Vendor Dashboard</div>
-          <div>→ SEO &amp; Digital Presence</div>
-          <div style="margin-top:11px;color:var(--a1);">50M+ target users</div>
-        </div>
-        <div class="pglow"></div>
-      </div>
-      <div class="pc rv">
-        <div class="pbadge brk">💻</div>
-        <h3>PU-CODE Hackathon 3.0</h3>
-        <p>Participated at Parul University competitive coding hackathon. Logic-driven problem solving under intense time pressure.</p>
-        <a href="pucodecertificate.jpeg" target="_blank" class="plink">View Certificate →</a>
-        <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
-      </div>
-      <div class="pc rv d1">
-        <div class="pbadge bhk">⚡ Hackathon</div>
-        <h3>Tech-Tonic Hackathon</h3>
-        <p>High-pressure team hackathon focused on rapid prototyping, collaborative engineering, and logic-driven product delivery.</p>
-        <a href="techtoniccertifiacte.jpeg" target="_blank" class="plink">View Certificate →</a>
-        <div class="pglow" style="background:radial-gradient(circle,rgba(129,140,248,.1),transparent 70%);"></div>
-      </div>
-      <div class="pc rv d2">
-        <div class="pbadge bhk">🌐 GDG</div>
-        <h3>GDG Hackathon</h3>
-        <p>Google Developer Group hackathon — project showcase and collaborative development gaining exposure to the Google tech ecosystem.</p>
-        <div class="pglow" style="background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);"></div>
-      </div>
-      <div class="pc rv">
-        <div class="pbadge bqz">🧠 AI Quiz</div>
-        <h3>Techedge: Future Clash AI Quiz</h3>
-        <p>AI-focused quiz at Techedge showcasing AI Literacy, knowledge of emerging models, and real-world AI application understanding.</p>
-        <div class="pglow" style="background:radial-gradient(circle,rgba(244,114,182,.1),transparent 70%);"></div>
-      </div>
-      <div class="pc rv d1">
-        <div class="pbadge brk">🏅 Rank #224</div>
-        <h3>HackTheRank Competition</h3>
-        <p>Secured Rank #224 in the HackTheRank competitive programming challenge on a national platform — strong algorithmic thinking.</p>
-        <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
-      </div>
-      <div class="pc rv d2">
-        <div class="pbadge bpt">🎤 Pitching</div>
-        <h3>Charusat National Youth Day Pitching</h3>
-        <p>Presented real-world tech solutions at CHARUSAT's National Youth Day event — entrepreneurial communication and product ideation.</p>
-        <div class="pglow" style="background:radial-gradient(circle,rgba(251,191,36,.1),transparent 70%);"></div>
-      </div>
-      <div class="pc rv">
-        <div class="pbadge bai">🧠 AI/ML · 3rd Place · 💰 Cash Prize</div>
-        <h3>Poster Competition</h3>
-        <p>Secured 3rd position and won a cash prize in the Poster Competition on "Fraud Detection in Financial Systems" — showcasing AI/ML-driven anomaly detection and financial security concepts through visual storytelling.</p>
-        <div class="pglow" style="background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);"></div>
-      </div>
-      <div class="pc rv d1">
-        <div class="pbadge brk">🏅 3rd Place</div>
-        <h3>Poster Competition</h3>
-        <p>Secured 3rd position and won a cash prize in the Poster Competition on "Fraud Detection in Financial Systems" — showcasing AI/ML-driven anomaly detection and financial security concepts through visual storytelling.</p>
-        <div class="pglow" style="background:radial-gradient(circle,rgba(52,211,153,.1),transparent 70%);"></div>
-      </div>
-    </div>
-  </div>
-</section>
+Current intended values:
 
-<!-- JOURNEY / TIMELINE -->
-<section id="timeline">
-  <div class="wrap">
-    <div class="slabel rv">04 — Experience</div>
-    <h2 class="stitle rv">Education & Journey</h2>
-    <div class="tl">
-      <div class="tli rv">
-        <div class="tld"></div>
-        <div class="tly">2023 — PRESENT</div>
-        <div class="tlt">Bachelor of Computer Applications (BCA)</div>
-        <div class="tldesc">CHARUSAT University · Current SGPA: 9.09. Focusing on AI applications, full-stack web development, software engineering, and data structures.</div>
-      </div>
-      <div class="tli rv">
-        <div class="tld"></div>
-        <div class="tly">2023 — PRESENT</div>
-        <div class="tlt">AI Developer & Hackathon Competitor</div>
-        <div class="tldesc">Building real-world AI platforms (VendorGo) and competing in national coding events including HackTheRank (#224), PU-CODE 3.0, and GDG Hackathons.</div>
-      </div>
-    </div>
-  </div>
-</section>
+HTML & CSS — 85%
+JavaScript — 45%
+React — 35%
+Python — 40%
+C++ — 70%
+SQL & MySQL — 65%
+Git & GitHub — 80%
+VS Code — 85%
+Linux / Cygwin — 50%
+AI Literacy — 60%
+Data Analysis — 60%
+Machine Learning Basics — 20%
+UI/UX & Figma — 60%
+SEO & Digital Marketing — 60%
+Hackathon Experience — 70%
+Teamwork & Leadership — 80%
+Problem Solving — 75%
 
-<!-- RESUME / CONTACT -->
-<section id="resume">
-  <div class="wrap">
-    <div class="slabel rv">05 — Connect</div>
-    <h2 class="stitle rv">Get In Touch</h2>
-    <p class="hero-tag rv">Interested in collaborating or discussing AI development opportunities? Feel free to connect!</p>
-    <div class="rgrid rv">
-      <a href="mailto:honey.darji@example.com" class="rl">
-        <div class="ri rib">✉️</div>
-        <div>
-          <div>Email</div>
-          <div class="rsub">Send a message</div>
-        </div>
-      </a>
-      <a href="https://github.com" target="_blank" class="rl">
-        <div class="ri rig">🐙</div>
-        <div>
-          <div>GitHub</div>
-          <div class="rsub">@honeydarji</div>
-        </div>
-      </a>
-      <a href="https://linkedin.com" target="_blank" class="rl">
-        <div class="ri rip">💼</div>
-        <div>
-          <div>LinkedIn</div>
-          <div class="rsub">Connect professionally</div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+IMPORTANT:
+Do not randomly change these percentages.
 
-<!-- CERTIFICATES -->
-<section id="certs">
-  <div class="wrap">
-    <div class="slabel rv">06 — Credentials</div>
-    <h2 class="stitle rv">Certifications</h2>
-    <div class="cgrid">
-      <div class="cc rv" onclick="openOverlay('pucodecertificate.jpeg')">
-        <div class="cimg-wrap">
-          <img src="pucodecertificate.jpeg" alt="PU-CODE Hackathon" onerror="this.classList.add('error')">
-          <span class="fallback">🏆</span>
-        </div>
-        <div class="cinfo">
-          <div class="cname">PU-CODE 3.0</div>
-          <div class="cdesc">Parul University Hackathon</div>
-          <span class="cbadge">Verified</span>
-        </div>
-      </div>
-      <div class="cc rv d1" onclick="openOverlay('techtoniccertifiacte.jpeg')">
-        <div class="cimg-wrap">
-          <img src="techtoniccertifiacte.jpeg" alt="Tech-Tonic Hackathon" onerror="this.classList.add('error')">
-          <span class="fallback">⚡</span>
-        </div>
-        <div class="cinfo">
-          <div class="cname">Tech-Tonic</div>
-          <div class="cdesc">Hackathon Certificate</div>
-          <span class="cbadge">Verified</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+Every displayed percentage must match the actual visual progress.
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Honey Darji · Built with HTML, CSS, &amp; JS</p>
-</footer>
+For example, if something says 70%, its circular progress should visually represent 70%.
 
-<!-- CHATBOT FAB & BOX -->
-<button class="cfab" onclick="toggleChat()">💬</button>
-<div class="cbox" id="cbox">
-  <div class="chdr">
-    <span class="cdot2"></span> HD AI Assistant
-  </div>
-  <div id="cmsgs">
-    <div class="cm bot">
-      <div class="cl">AI ASSISTANT</div>
-      <div>Hi! Ask me anything about Honey's projects, skills, or experience.</div>
-    </div>
-  </div>
-  <div class="qbs">
-    <button class="qb" onclick="askQ('What is VendorGo?')">VendorGo?</button>
-    <button class="qb" onclick="askQ('What are her skills?')">Skills?</button>
-    <button class="qb" onclick="askQ('Show CGPA')">CGPA?</button>
-  </div>
-  <div class="cinw">
-    <input type="text" id="cinp" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendMsg()">
-    <button class="csend" onclick="sendMsg()">➔</button>
-  </div>
-</div>
+==================================================
+POSSIBLE VISUAL STRUCTURE
+==================================================
 
-<script>
-// Custom Cursor
-const cur = document.getElementById('cur');
-const curR = document.getElementById('cur-r');
-const curG = document.getElementById('cur-g');
+Think of the section more like:
 
-window.addEventListener('mousemove', (e) => {
-  const { clientX: x, clientY: y } = e;
-  cur.style.left = `${x}px`; cur.style.top = `${y}px`;
-  curR.style.left = `${x}px`; curR.style.top = `${y}px`;
-  curG.style.left = `${x}px`; curG.style.top = `${y}px`;
-});
+---------------------------------------------------
+                 SKILLS & TOOLS
 
-// Interactive hover effects on interactive elements
-document.querySelectorAll('a, button, .sc, .pc, .cc, .rl, .circ-card').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('ch'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('ch'));
-});
+        CIRCULAR VISUAL       TECH ECOSYSTEM
+       
+       ○ HTML                 ┌──────────────┐
+       ○ Python               │ FRONTEND     │
+       ○ Git                  │ HTML CSS JS  │
+       ○ AI                   └──────┬───────┘
+       ○ Figma                       │
+                                     │
+                              ┌──────▼───────┐
+                              │ AI / DATA    │
+                              │ Python • AI  │
+                              └──────────────┘
+---------------------------------------------------
 
-// 3D Tilt & Light Effect for cards
-document.querySelectorAll('.pc, .cc, .circ-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty('--mx', `${(x / rect.width) * 100}%`);
-    card.style.setProperty('--my', `${(y / rect.height) * 100}%`);
-    
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const rx = (e.clientY - cy) / 15;
-    const ry = (cx - e.clientX) / 15;
-    card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(10px)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-  });
-});
+THIS IS ONLY A CONCEPTUAL EXAMPLE.
 
-// Typing Effect for Role
-const roles = ["AI Developer", "BCA Student", "UI/UX Designer", "Hackathon Enthusiast"];
-let rIdx = 0, cIdx = 0, isDeleting = false;
-const roleText = document.getElementById('role-text');
+Do NOT reproduce this exact structure.
 
-function typeRole() {
-  const current = roles[rIdx];
-  if (isDeleting) {
-    roleText.textContent = current.substring(0, cIdx - 1);
-    cIdx--;
-  } else {
-    roleText.textContent = current.substring(0, cIdx + 1);
-    cIdx++;
-  }
+Create your own original composition.
 
-  let delay = isDeleting ? 50 : 100;
-  if (!isDeleting && cIdx === current.length) {
-    delay = 2000;
-    isDeleting = true;
-  } else if (isDeleting && cIdx === 0) {
-    isDeleting = false;
-    rIdx = (rIdx + 1) % roles.length;
-    delay = 500;
-  }
-  setTimeout(typeRole, delay);
-}
-typeRole();
+==================================================
+INTERACTION
+==================================================
 
-// Reveal animations on Scroll
-const reveals = document.querySelectorAll('.rv');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.15 });
+If appropriate, make the second visualization interactive.
 
-reveals.forEach(r => observer.observe(r));
+For example:
 
-// Theme Toggle
-function toggleTheme() {
-  const html = document.documentElement;
-  const btn = document.getElementById('tbtn');
-  if (html.getAttribute('data-theme') === 'dark') {
-    html.setAttribute('data-theme', 'light');
-    btn.textContent = '🌙 Dark';
-  } else {
-    html.setAttribute('data-theme', 'dark');
-    btn.textContent = '☀ Light';
-  }
-}
+Hovering over “Python” could highlight related areas such as:
+- AI/Data
+- Programming
+- Machine Learning
 
-// Overlay Image Preview
-function openOverlay(src) {
-  document.getElementById('overlay-img').src = src;
-  document.getElementById('overlay').classList.add('open');
-}
-function closeOverlay() {
-  document.getElementById('overlay').classList.remove('open');
-}
+Hovering over “Git & GitHub” could highlight:
+- Development Tools
+- Projects
+- Collaboration
 
-// Chatbot functionality
-function toggleChat() {
-  const box = document.getElementById('cbox');
-  box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
-}
+Hovering over “Figma” could highlight:
+- UI/UX
+- Design
 
-function sendMsg() {
-  const input = document.getElementById('cinp');
-  const txt = input.value.trim();
-  if (!txt) return;
-  askQ(txt);
-  input.value = '';
-}
+Keep interactions subtle and professional.
 
-function askQ(text) {
-  const msgs = document.getElementById('cmsgs');
-  
-  // User message
-  const uDiv = document.createElement('div');
-  uDiv.className = 'cm user';
-  uDiv.innerHTML = `<div class="cl">YOU</div><div>${text}</div>`;
-  msgs.appendChild(uDiv);
+Do NOT over-animate the section.
 
-  // Bot response
-  let resp = "I'm Honey's portfolio assistant. Feel free to explore her projects or contact her directly!";
-  const q = text.toLowerCase();
-  if (q.includes('vendorgo')) {
-    resp = "VendorGo is an AI-powered platform for 50M+ street vendors in India, featuring automated WhatsApp integration and zero-barrier digital setup.";
-  } else if (q.includes('skill')) {
-    resp = "Honey is skilled in HTML/CSS/JS, Python, AI Literacy, Git/GitHub, Data Analysis, UI/UX Design, and Tally Prime.";
-  } else if (q.includes('cgpa') || q.includes('sgpa')) {
-    resp = "Honey has an impressive SGPA of 9.09 in her BCA program at CHARUSAT University.";
-  }
+==================================================
+RESPONSIVENESS
+==================================================
 
-  setTimeout(() => {
-    const bDiv = document.createElement('div');
-    bDiv.className = 'cm bot';
-    bDiv.innerHTML = `<div class="cl">AI ASSISTANT</div><div>${resp}</div>`;
-    msgs.appendChild(bDiv);
-    msgs.scrollTop = msgs.scrollHeight;
-  }, 300);
+Desktop:
+Create a balanced multi-column composition where the circular skills and secondary visualization can sit beside each other.
 
-  msgs.scrollTop = msgs.scrollHeight;
-}
+Tablet:
+Allow the layout to adapt naturally.
 
-// Particle Canvas Background Effect
-const canvas = document.getElementById('bg');
-const ctx = canvas.getContext('2d');
-let pts = [];
+Mobile:
+Stack the elements vertically.
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+There must be:
+- no horizontal scrolling
+- no overlapping elements
+- no broken circles
+- no clipped text
+- no excessive empty space
 
-for(let i=0; i<45; i++) {
-  pts.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.8 + 0.5,
-    dx: (Math.random() - 0.5) * 0.4,
-    dy: (Math.random() - 0.5) * 0.4
-  });
-}
+==================================================
+VERY IMPORTANT — CODE SAFETY
+==================================================
 
-function animBg() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
-  
-  pts.forEach(p => {
-    p.x += p.dx;
-    p.y += p.dy;
-    if(p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if(p.y < 0 || p.y > canvas.height) p.dy *= -1;
-    
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fill();
-  });
-  
-  requestAnimationFrame(animBg);
-}
-animBg();
-</script>
-</body>
-</html>
+ONLY modify the existing Skills & Tools section.
+
+DO NOT TOUCH:
+
+- Navbar
+- Hero
+- About
+- Projects / Work
+- Journey
+- Achievements
+- Certificates
+- AI Chat Assistant
+- Contact
+- Footer
+- Other sections
+- Existing background system
+- Existing global animations
+- Existing theme
+- Existing colors
+- Existing responsive behavior outside Skills
+- Existing content outside Skills
+
+Do NOT install new libraries unless absolutely required.
+
+Prefer existing HTML/CSS/JavaScript and existing libraries already present in the project.
+
+Do NOT rename unrelated classes.
+
+Do NOT restructure unrelated code.
+
+Do NOT "improve" other parts of the website.
+
+==================================================
+MOST IMPORTANT DESIGN PRINCIPLE
+==================================================
+
+I want the result to feel like:
+
+“An original futuristic developer skills visualization”
+
+NOT:
+
+“A copy of the reference screenshot.”
+
+The reference screenshot is ONLY being provided to demonstrate the idea of using empty space creatively.
+
+Keep my circular skill concept, improve its composition, and use the remaining space for a complementary ORIGINAL technical visualization.
+
+Before editing, inspect the existing Skills & Tools implementation and preserve its current visual identity.
+
+After editing, provide:
+
+1. A short summary of what changed.
+2. The exact files modified.
+3. Confirmation that ONLY the Skills & Tools section was modified.
+4. Confirmation that no external libraries were added.
